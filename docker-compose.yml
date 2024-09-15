@@ -5,8 +5,8 @@
       context: .
       dockerfile: ConsolePriemChecker/Dockerfile
 
-  webapplication1:
-    image: webpriemgetal
+  webpriemchecker:
+    image: webpriemchecker
     build:
       context: .
-      dockerfile: WebPriemgetal/Dockerfile
+      dockerfile: WebPriemChecker/Dockerfile

@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="BigInteger" Version="1.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
       <PackageReference Include="Open.Numeric.Primes" Version="4.0.2" />
     </ItemGroup>
 

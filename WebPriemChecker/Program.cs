@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<PriemCheckContext>(options =>
+    options.UseSqlServer("Server=localhost,1433;Database=PriemCheckDb;User=sa;Password=Your_password123;"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

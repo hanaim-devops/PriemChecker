@@ -23,6 +23,12 @@ Aangezien de opdracht in het Nederlands is gebruik ik ook Nederlands, maar gebru
 
 > "The property of being prime is called primality. A simple but slow method of checking the primality of a given number n, called trial division, ..." - https://en.wikipedia.org/wiki/Prime_number
 
+
+## EF core, code first ORM with migrations
+
+Bron: 
+https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
+
 ## How to run?
 
 De WEB api met Swagger test pagina's kun je makkelijkst runnen uit IDE. Ik gebruikte Rider 2024.2.4.
