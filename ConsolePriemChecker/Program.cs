@@ -3,7 +3,7 @@
 
 using PrimeChecker;
 
-namespace ConsolePrimeTester
+namespace ConsolePrimeChecker
 {
     class Program
     {

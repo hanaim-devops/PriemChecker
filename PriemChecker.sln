@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePriemChecker.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker", "PriemChecker\PriemChecker.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPriemgetal", "WebPriemgetal\WebPriemgetal.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPriemChecker", "WebPriemChecker\WebPriemChecker.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
