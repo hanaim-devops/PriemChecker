@@ -1,6 +1,6 @@
 namespace PriemCheckerLibrary;
 
-public class SimpelPriemChecker : PriemChecker
+public class SimpelPriemChecker: PriemChecker
 {
     public Boolean IsPriemgetal(int kandidaat, out int aantalLoops)
     {

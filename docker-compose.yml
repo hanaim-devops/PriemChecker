@@ -1,12 +1,41 @@
 ﻿services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Your_password123
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Your_password123", "-Q", "SELECT 1"]
+      interval: 10s
+      retries: 10
+    networks:
+      - priemchecker-network
+
   consolepriemchecker:
     image: consolepriemchecker
     build:
       context: .
       dockerfile: ConsolePriemChecker/Dockerfile
+    depends_on:
+      - db
+    networks:
+      - priemchecker-network
 
   webpriemchecker:
     image: webpriemchecker
     build:
       context: .
       dockerfile: WebPriemChecker/Dockerfile
+    depends_on:
+      - db
+    networks:
+      - priemchecker-network
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=PriemCheckDb;User=sa;Password=Your_password123;
+
+networks:
+  priemchecker-network:
+    driver: bridge

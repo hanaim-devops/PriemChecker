@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using PriemCheckerLibrary;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,17 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PriemCheckContext>(options =>
     options.UseSqlServer("Server=localhost,1433;Database=PriemCheckDb;User=sa;Password=Your_password123;"));
+
+// Register the base implementation
+builder.Services.AddScoped<NuGetPriemChecker>();
+
+// Register the decorator, but make sure it depends on the specific implementation
+builder.Services.AddScoped<PriemChecker>(sp =>
+{
+    var baseChecker = sp.GetRequiredService<NuGetPriemChecker>();
+    var context = sp.GetRequiredService<PriemCheckContext>();
+    return new MemoizingPriemChecker(context, baseChecker);
+});
 
 var app = builder.Build();
 

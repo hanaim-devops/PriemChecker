@@ -2,7 +2,7 @@ using Open.Numeric.Primes;
 
 namespace PriemCheckerLibrary;
 
-public class NuGetPriemChecker : PriemChecker
+public class NuGetPriemChecker: PriemChecker
 {
     public Boolean IsPriemgetal(int kandidaat)
     {
