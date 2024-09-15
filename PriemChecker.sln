@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Tests", "PriemChecker.Tests\PriemChecker.Tests.csproj", "{86CEE594-E1A9-48AB-A690-32DB1FEC453B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemCheckerLibrary.Tests", "PriemCheckerLibrary.Tests\PriemCheckerLibrary.Tests.csproj", "{86CEE594-E1A9-48AB-A690-32DB1FEC453B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker", "PriemChecker\PriemChecker.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemCheckerLibrary", "PriemCheckerLibrary\PriemCheckerLibrary.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPriemChecker", "WebPriemChecker\WebPriemChecker.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
 EndProject

@@ -1,7 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Zie de README.md voor meer informatie.
-
-using PrimeChecker;
+﻿using PriemCheckerLibrary;
 
 namespace ConsolePrimeChecker
 {
@@ -9,6 +6,8 @@ namespace ConsolePrimeChecker
     {
         public static void Main(string[] args)
         {
+            var primeTester = new NuGetPriemChecker();
+
             int priemKandidaat = 0;
             if (args.Length >= 2)
             {
@@ -24,12 +23,16 @@ namespace ConsolePrimeChecker
                 if (!Int32.TryParse(args[0], out priemKandidaat))
                 {
                     throw new ArgumentException("Input " + args[0] + " is geen geldig integer getal.");
+                    // var grotePriemKandidaat = System.Numerics.BigInteger.Parse(args[0]);
+                    // var isGrotePriem = primeTester.IsPriemgetal(grotePriemKandidaat);
                 }
             }
 
-            var primeTester = new PriemChecker();
             var isPriem = primeTester.IsPriemgetal(priemKandidaat);
+            // int aantalLoops = 0;
+            // var isPriem = primeTester.IsPriemgetal(priemKandidaat, aantalLoops);
             Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));
+            // Console.WriteLine("Aantal loops: " + aantalLoops);
         }
     }
 }

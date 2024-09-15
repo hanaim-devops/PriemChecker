@@ -4,6 +4,8 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
     
     <IsPackable>false</IsPackable>
+    
+    <RootNamespace>PriemChecker.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PriemChecker\PriemChecker.csproj" />
+    <ProjectReference Include="..\PriemCheckerLibrary\PriemCheckerLibrary.csproj" />
   </ItemGroup>
   
 </Project>

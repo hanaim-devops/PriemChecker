@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PriemChecker\PriemChecker.csproj" />
+      <ProjectReference Include="..\PriemCheckerLibrary\PriemCheckerLibrary.csproj" />
     </ItemGroup>
 
 </Project>
