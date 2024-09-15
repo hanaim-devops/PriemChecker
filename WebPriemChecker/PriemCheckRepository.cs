@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace PriemCheckerLibrary;
+namespace WebPriemChecker;
 
 // TODO: Naar eigen 'Persistence' library verplaatsen i.v.m. Layer pattern?
 public class PriemCheckRepository

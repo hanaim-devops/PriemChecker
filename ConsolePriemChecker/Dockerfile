@@ -8,7 +8,7 @@ WORKDIR /src
 COPY ["ConsolePriemChecker/ConsolePriemChecker.csproj", "ConsolePriemChecker/"]
 RUN dotnet restore "ConsolePriemChecker/ConsolePriemChecker.csproj"
 COPY . .
-WORKDIR "/src/ConsolePriemeChecker"
+WORKDIR "/src/ConsolePriemChecker"
 RUN dotnet build "ConsolePriemChecker.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

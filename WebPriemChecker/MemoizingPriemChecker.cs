@@ -1,4 +1,6 @@
-namespace PriemCheckerLibrary;
+using PriemCheckerLibrary;
+
+namespace WebPriemChecker;
 
 public class MemoizingPriemChecker(PriemCheckContext context, NuGetPriemChecker innerService) : PriemChecker
 {

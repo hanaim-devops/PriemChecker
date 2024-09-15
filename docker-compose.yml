@@ -35,6 +35,8 @@
       - priemchecker-network
     environment:
       - ConnectionStrings__DefaultConnection=Server=db,1433;Database=PriemCheckDb;User=sa;Password=Your_password123;
+    ports:
+      - "5062:80"  # Maps port 5062 on the host to port 80 in the container
 
 networks:
   priemchecker-network:
