@@ -1,0 +1,6 @@
+﻿services:
+  consoleprimetester:
+    image: consoleprimetester
+    build:
+      context: .
+      dockerfile: ConsolePrimeTester/Dockerfile
