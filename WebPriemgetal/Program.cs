@@ -1,3 +1,6 @@
+using PrimeChecker;
+using WebApplication1;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -36,9 +39,20 @@ app.MapGet("/weatherforecast", () =>
     .WithName("GetWeatherForecast")
     .WithOpenApi();
 
+app.MapPost("/isPriem", (PriemgetalChecker priemgetalChecker, int getal) =>
+    {
+        return priemgetalChecker.TestPriemgetal(getal);
+    })
+    .WithName("IsPriem")
+    .WithOpenApi();
+
+
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+namespace WebApplication1
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+    {
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
 }

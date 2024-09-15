@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>ConsolePrimeTester</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PrimeChecker\PrimeChecker.csproj" />
+      <ProjectReference Include="..\PriemChecker\PriemChecker.csproj" />
     </ItemGroup>
 
 </Project>

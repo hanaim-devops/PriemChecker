@@ -1,5 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Zie de README.md voor meer informatie.
+
+using PrimeChecker;
+
 namespace ConsolePrimeTester
 {
     class Program
@@ -25,7 +28,7 @@ namespace ConsolePrimeTester
             }
 
             var primeTester = new PriemgetalChecker();
-            var isPriem = primeTester.testPrime(priemKandidaat);
+            var isPriem = primeTester.TestPriemgetal(priemKandidaat);
             Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));
         }
     }

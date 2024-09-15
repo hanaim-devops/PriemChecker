@@ -1,7 +1,8 @@
 using JetBrains.Annotations;
+using PrimeChecker;
 using Xunit;
 
-namespace ConsolePrimeTester.Tests;
+namespace ConsolePriemChecker.Tests;
 
 [TestSubject(typeof(PriemgetalChecker))]
 public class PriemgetalCheckerTest

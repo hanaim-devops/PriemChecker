@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePrimeTester", "ConsolePrimeTester\ConsolePrimeTester.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePriemChecker", "ConsolePriemChecker\ConsolePriemChecker.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}"
 	ProjectSection(SolutionItems) = preProject
@@ -8,11 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePrimeTester.Tests", "ConsolePrimeTester.Tests\ConsolePrimeTester.Tests.csproj", "{86CEE594-E1A9-48AB-A690-32DB1FEC453B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePriemChecker.Tests", "ConsolePriemChecker.Tests\ConsolePriemChecker.Tests.csproj", "{86CEE594-E1A9-48AB-A690-32DB1FEC453B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeChecker", "PrimeChecker\PrimeChecker.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker", "PriemChecker\PriemChecker.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPriemgetal", "WebPriemgetal\WebPriemgetal.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

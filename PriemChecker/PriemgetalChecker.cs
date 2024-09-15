@@ -1,7 +1,9 @@
 
+namespace PrimeChecker;
+
 public class PriemgetalChecker
 {
-    public Boolean testPrime(int numberToTest)
+    public Boolean TestPriemgetal(int numberToTest)
     {
         return numberToTest >= 3;
     }
