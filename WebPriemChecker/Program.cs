@@ -41,7 +41,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapPost("/isPriem", (PriemChecker priemgetalChecker, int getal) =>
     {
-        return priemgetalChecker.TestPriemgetal(getal);
+        return priemgetalChecker.IsPriemgetal(getal);
     })
     .WithName("IsPriem")
     .WithOpenApi();

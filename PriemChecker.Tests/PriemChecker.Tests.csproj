@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsolePriemChecker\ConsolePriemChecker.csproj" />
+    <ProjectReference Include="..\PriemChecker\PriemChecker.csproj" />
   </ItemGroup>
   
 </Project>
