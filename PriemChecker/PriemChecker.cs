@@ -1,7 +1,7 @@
 
 namespace PrimeChecker;
 
-public class PriemgetalChecker
+public class PriemChecker
 {
     public Boolean TestPriemgetal(int numberToTest)
     {

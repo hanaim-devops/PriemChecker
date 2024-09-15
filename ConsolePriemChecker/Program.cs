@@ -27,7 +27,7 @@ namespace ConsolePrimeTester
                 }
             }
 
-            var primeTester = new PriemgetalChecker();
+            var primeTester = new PriemChecker();
             var isPriem = primeTester.TestPriemgetal(priemKandidaat);
             Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));
         }

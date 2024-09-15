@@ -23,6 +23,48 @@ Aangezien de opdracht in het Nederlands is gebruik ik ook Nederlands, maar gebru
 
 > "The property of being prime is called primality. A simple but slow method of checking the primality of a given number n, called trial division, ..." - https://en.wikipedia.org/wiki/Prime_number
 
+## How to run?
+
+De WEB api met Swagger test pagina's kun je makkelijkst runnen uit IDE. Ik gebruikte Rider 2024.2.4.
+
+Maar het kan ook met
+```console
+cd WebPriemgetal 
+dotnet run
+```
+
+En dan ga je naar aangegeven URL. Je moet wel `/swagger` achtervoegen.
+
+Standaard `http://localhost:5062`
+
+Of gebruik
+```console
+curl -X 'POST' \
+  'http://localhost:5062/isPriem?getal=12' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{}'
+```
+
+De command line kan je runnen met `dotnet` cli, mits je die hebt geinstalleerd natuurlijk (en [`brew`](https://brew.sh/) geïnstalleerd hebt).
+
+### Install op macOS:
+
+```console
+brew install dotnet@8
+brew install --cask dotnet-sdk
+```
+
+En dan run je de applicatie met bijvoorbeeld input `12` om te prime checken met `dotnet run 12`:
+
+Als je in de folder zit (`PrimeChecker`):
+
+```console
+cd ConsolePriemChecker
+dotnet run 12
+>Is getal 12 een priemgetal? JA
+```
+
 ## Bronnen
 
 - Wal, B.W. (augustus 2024) *Unit testen in Java met Maven Surefire en JUnit.* Geraadpleegd september 2024 op <https://minordevops.nl/blogs/spring-boot-priemtester/index.html>

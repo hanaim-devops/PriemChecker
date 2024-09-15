@@ -1,12 +1,12 @@
 ﻿services:
-  consoleprimetester:
-    image: consoleprimetester
+  consolepriemchecker:
+    image: consolepriemchecker
     build:
       context: .
-      dockerfile: ConsolePrimeTester/Dockerfile
+      dockerfile: ConsolePriemChecker/Dockerfile
 
   webapplication1:
-    image: webapplication1
+    image: webpriemgetal
     build:
       context: .
-      dockerfile: WebApplication1/Dockerfile
+      dockerfile: WebPriemgetal/Dockerfile

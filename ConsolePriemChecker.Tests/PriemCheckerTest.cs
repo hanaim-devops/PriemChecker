@@ -4,20 +4,20 @@ using Xunit;
 
 namespace ConsolePriemChecker.Tests;
 
-[TestSubject(typeof(PriemgetalChecker))]
-public class PriemgetalCheckerTest
+[TestSubject(typeof(PriemChecker))]
+public class PriemCheckerTest
 {
-    private readonly PriemgetalChecker sut;
+    private readonly PriemChecker sut;
 
-    public PriemgetalCheckerTest()
+    public PriemCheckerTest()
     {
-        sut = new PriemgetalChecker();
+        sut = new PriemChecker();
     }
     
     [Fact]
     public void test()
     {
-        var actual = sut.testPrime(1);
+        var actual = sut.TestPriemgetal(1);
         var expected = false;
         
         Assert.Equal(expected, actual);
