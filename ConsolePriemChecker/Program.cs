@@ -1,4 +1,7 @@
-﻿using PriemCheckerLibrary;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PriemChecker.Abstractions;
+using PriemCheckerLibrary;
 
 namespace ConsolePriemChecker
 {
@@ -6,8 +9,6 @@ namespace ConsolePriemChecker
     {
         public static void Main(string[] args)
         {
-            var primeTester = new NuGetPriemChecker();
-
             int priemKandidaat = 0;
             if (args.Length >= 2)
             {
@@ -28,7 +29,29 @@ namespace ConsolePriemChecker
                 }
             }
 
-            var isPriem = primeTester.IsPriemgetal(priemKandidaat);
+            // Composition Root - Configureer alle afhankelijkheden via DI.
+            var serviceProvider = new ServiceCollection()
+                .AddDbContext<PriemCheckContext>(options =>
+                    options.UseSqlServer("Server=localhost,1433;Database=PriemCheckDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True;"))
+
+                // Register the base implementation of IPriemChecker
+                .AddScoped<NuGetPriemChecker>()
+
+                // Register MemoizingPriemChecker as a decorator, depending on the base implementation
+                .AddScoped<IPriemChecker>(sp =>
+                {
+                    var baseChecker = sp.GetRequiredService<NuGetPriemChecker>();  // Basisimplementatie
+                    var context = sp.GetRequiredService<PriemCheckContext>();      // DB context
+                    return new MemoizingPriemChecker(context, baseChecker);        // Teruggeven van de decorator
+                })
+                .BuildServiceProvider();
+            
+            // Resolve services
+            using var scope = serviceProvider.CreateScope();
+            var priemChecker = scope.ServiceProvider.GetRequiredService<IPriemChecker>();
+
+            // Voorbeeld: gebruik de service
+            var isPriem = priemChecker.IsPriemgetal(priemKandidaat);
             // int aantalLoops = 0;
             // var isPriem = primeTester.IsPriemgetal(priemKandidaat, aantalLoops);
             Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));

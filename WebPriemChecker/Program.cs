@@ -16,8 +16,8 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        Console.WriteLine("Using connection string: '" + connectionString +"'."); // Tijdelijke log.
+        //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        //Console.WriteLine("Using connection string: '" + connectionString +"'."); // Tijdelijke log.
 
         // TODO: De (DB) connection string gebruikt TrustServerCertificate=True, maar dat kan op productie niet.
         // Dan moet er een geldig NON self-signed certificate zijn, of we iets regelen dat self signed wel werkt ;)

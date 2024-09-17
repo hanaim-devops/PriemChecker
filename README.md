@@ -96,6 +96,23 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_password123" \
 -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 
+Je kunt deze dan benaderen via bijvoorbeeld de Database explorer in Rider (onder `View` -> `Tool windows` -> `Database`). Deze kun je de connection string geven die in `appSettings.Development.json` ook staat voor gebruik door de applicatie, en dan connect hij.
+
+Hier een voorbeeld van genereren van een (data) migration:
+
+```
+dotnet ef migrations add IdVeldInPriemCheckResultaat --project PriemCheckerLibrary --startup-project WebPriemChecker
+
+```
+
+En hier een voorbeeld van uitvoeren van deze migratie:
+
+```
+dotnet ef database update --project PriemCheckerLibrary --startup-project WebPriemChecker
+```
+
+De kern is hierbij `dotnet ef database update`. Maar de `--project` flag setting helpt zodat je dit commando vanuit de root `PriemChecker` folder kunt uitvoeren en niet eerst een `cd PriemCheckerLibrary` in hoeft om het project met de `...Context` bestanden erin in te gaan. En het `--startup-project` zorgt ervoor dat de migrations de configuratie uit de `appSettings.*.json` bestanden in dit web project kunnen lezen (via de hulpklasse `PriemCheckContextFactory`).
+
 ## Bronnen
 
 - Wal, B.W. (augustus 2024) *Unit testen in Java met Maven Surefire en JUnit.* Geraadpleegd september 2024 op <https://minordevops.nl/blogs/spring-boot-priemtester/index.html>

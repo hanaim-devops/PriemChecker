@@ -1,0 +1,6 @@
+<Project>
+    <PropertyGroup>
+        <EFMigrationsProject>PriemCheckerLibrary</EFMigrationsProject>
+        <EFStartupProject>WebPriemChecker</EFStartupProject>
+    </PropertyGroup>
+</Project>

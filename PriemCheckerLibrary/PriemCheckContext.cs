@@ -16,6 +16,12 @@ public class PriemCheckContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<PriemCheckResultaat>().HasKey(p => p.priemKandidaatWaarde);
+        modelBuilder.Entity<PriemCheckResultaat>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();  // Alleen Id is Identity.
+
+        modelBuilder.Entity<PriemCheckResultaat>()
+            .Property(p => p.PriemKandidaatWaarde)
+            .ValueGeneratedNever();  // Dit zorgt ervoor dat PriemKandidaatWaarde geen Identity krijgt.
     }
 }
