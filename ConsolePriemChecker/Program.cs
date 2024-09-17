@@ -1,6 +1,6 @@
 ﻿using PriemCheckerLibrary;
 
-namespace ConsolePrimeChecker
+namespace ConsolePriemChecker
 {
     class Program
     {

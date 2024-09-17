@@ -1,8 +1,9 @@
 using Open.Numeric.Primes;
+using PriemChecker.Abstractions;
 
 namespace PriemCheckerLibrary;
 
-public class NuGetPriemChecker: PriemChecker
+public class NuGetPriemChecker: IPriemChecker
 {
     public Boolean IsPriemgetal(int kandidaat)
     {

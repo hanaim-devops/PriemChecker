@@ -71,6 +71,31 @@ dotnet run 12
 >Is getal 12 een priemgetal? JA
 ```
 
+## Database/EF Core
+
+Je kunt lokaal los de SQL server runnen in een container (eerst [Docker](https://docs.docker.com/engine/install/) installeren, op Windows of macOS makkelijkst via [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) installeren):
+
+## Op Windows
+
+Start SQL server in container
+
+```console
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_password123" \
+-p 1433:1433 --name sqlserver \
+-d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+## Voor macOS
+
+Op macOS met M1 of M2 processor moet je de `--platform linux/amd64` flag toevoegen:
+
+```console
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_password123" \
+-p 1433:1433 --name sqlserver \
+--platform linux/amd64 \
+-d mcr.microsoft.com/mssql/server:2022-latest
+```
+
 ## Bronnen
 
 - Wal, B.W. (augustus 2024) *Unit testen in Java met Maven Surefire en JUnit.* Geraadpleegd september 2024 op <https://minordevops.nl/blogs/spring-boot-priemtester/index.html>

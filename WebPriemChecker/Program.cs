@@ -1,7 +1,9 @@
+using PriemCheckerLibrary;
+
 namespace WebPriemChecker;
 
 using Microsoft.EntityFrameworkCore;
-using PriemCheckerLibrary;
+using PriemChecker.Abstractions;
 
 internal class Program
 {
@@ -14,14 +16,19 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        Console.WriteLine("Using connection string: '" + connectionString +"'."); // Tijdelijke log.
+
+        // TODO: De (DB) connection string gebruikt TrustServerCertificate=True, maar dat kan op productie niet.
+        // Dan moet er een geldig NON self-signed certificate zijn, of we iets regelen dat self signed wel werkt ;)
         builder.Services.AddDbContext<PriemCheckContext>(options =>
-            options.UseSqlServer("Server=localhost,1433;Database=PriemCheckDb;User=sa;Password=Your_password123;"));
+            options.UseSqlServer("connectionString"));
 
         // Register the base implementation
         builder.Services.AddScoped<NuGetPriemChecker>();
 
         // Register the decorator, but make sure it depends on the specific implementation
-        builder.Services.AddScoped<PriemChecker>(sp =>
+        builder.Services.AddScoped<IPriemChecker>(sp =>
         {
             var baseChecker = sp.GetRequiredService<NuGetPriemChecker>();
             var context = sp.GetRequiredService<PriemCheckContext>();
@@ -39,14 +46,17 @@ internal class Program
 
         app.UseHttpsRedirection();
 
-        app.MapPost("/isPriem", (PriemChecker priemgetalChecker, int getal) =>
+        app.MapPost("/isPriem", (IPriemChecker priemgetalChecker, int getal) =>
             {
                 return priemgetalChecker.IsPriemgetal(getal);
             })
             .WithName("IsPriem")
             .WithOpenApi();
 
-
+        app.MapPost("helloWorld", () => "Hello World!")
+            .WithName("Hello World")
+            .WithOpenApi();
+        
         app.Run();
     }
 }

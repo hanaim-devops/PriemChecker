@@ -1,8 +1,8 @@
-using PriemCheckerLibrary;
+using PriemChecker.Abstractions;
 
-namespace WebPriemChecker;
+namespace PriemCheckerLibrary;
 
-public class MemoizingPriemChecker(PriemCheckContext context, NuGetPriemChecker innerService) : PriemChecker
+public class MemoizingPriemChecker(PriemCheckContext context, NuGetPriemChecker innerService) : IPriemChecker
 {
     public bool IsPriemgetal(int number)
     {

@@ -1,6 +1,8 @@
+using PriemChecker.Abstractions;
+
 namespace PriemCheckerLibrary;
 
-public class SimpelPriemChecker: PriemChecker
+public class SimpelPriemChecker: IPriemChecker
 {
     public Boolean IsPriemgetal(int kandidaat, out int aantalLoops)
     {
