@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Xunit;
 
-namespace PriemCheckerLibrary.Tests;
+namespace PriemChecker.Domain.Tests;
 
 [TestSubject(typeof(SimpelPriemChecker))]
 public class PriemCheckerTest

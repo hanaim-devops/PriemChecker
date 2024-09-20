@@ -1,9 +1,8 @@
 using PriemChecker.Abstractions;
 
-namespace PriemCheckerLibrary;
+namespace PriemChecker.Persistence;
 
-public class MemoizingPriemChecker: IPriemChecker
-{
+public class MemoizingPriemChecker: IPriemChecker {
  
     private readonly PriemCheckContext _context;
     private readonly IPriemChecker _innerService;
@@ -36,7 +35,7 @@ public class MemoizingPriemChecker: IPriemChecker
         var result = _innerService.IsPriemgetal(number);
 
         // Resultaat opslaan in database
-        _context.PriemCheckResultaten.Add(new PriemCheckResultaat(number, result));
+        _context.PriemCheckResultaten.Add(new PriemCheckResultaatEntity(number, result));
         _context.SaveChanges();
 
         return result;

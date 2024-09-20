@@ -1,6 +1,6 @@
 using PriemChecker.Abstractions;
 
-namespace PriemCheckerLibrary;
+namespace PriemChecker.Domain;
 
 public class SimpelPriemChecker: IPriemChecker
 {

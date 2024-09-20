@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePriemChecker", "ConsolePriemChecker\ConsolePriemChecker.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Console", "PriemChecker.Console\PriemChecker.Console.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}"
 	ProjectSection(SolutionItems) = preProject
@@ -8,13 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemCheckerLibrary.Tests", "PriemCheckerLibrary.Tests\PriemCheckerLibrary.Tests.csproj", "{86CEE594-E1A9-48AB-A690-32DB1FEC453B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Domain.Tests", "PriemChecker.Domain.Tests\PriemChecker.Domain.Tests.csproj", "{86CEE594-E1A9-48AB-A690-32DB1FEC453B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemCheckerLibrary", "PriemCheckerLibrary\PriemCheckerLibrary.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Domain", "PriemChecker.Domain\PriemChecker.Domain.csproj", "{2515EB48-B3AF-40C1-9E9E-FF84844643BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPriemChecker", "WebPriemChecker\WebPriemChecker.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Web", "PriemChecker.Web\PriemChecker.Web.csproj", "{35DA7E3A-C592-47C7-B231-89AB3885AF32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Abstractions", "PriemChecker.Abstractions\PriemChecker.Abstractions.csproj", "{350ABBFC-8D5B-474C-B225-BC8D7DD4B90C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Persistence", "PriemChecker.Persistence\PriemChecker.Persistence.csproj", "{8DA0FC15-34E2-4876-9E56-F89677C96E88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Abstractions", "PriemChecker.Abstractions\PriemChecker.Abstractions.csproj", "{1F211005-ECDA-4293-AB2A-9204EE330D3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +40,13 @@ Global
 		{35DA7E3A-C592-47C7-B231-89AB3885AF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35DA7E3A-C592-47C7-B231-89AB3885AF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35DA7E3A-C592-47C7-B231-89AB3885AF32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{350ABBFC-8D5B-474C-B225-BC8D7DD4B90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{350ABBFC-8D5B-474C-B225-BC8D7DD4B90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{350ABBFC-8D5B-474C-B225-BC8D7DD4B90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{350ABBFC-8D5B-474C-B225-BC8D7DD4B90C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA0FC15-34E2-4876-9E56-F89677C96E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA0FC15-34E2-4876-9E56-F89677C96E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA0FC15-34E2-4876-9E56-F89677C96E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA0FC15-34E2-4876-9E56-F89677C96E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

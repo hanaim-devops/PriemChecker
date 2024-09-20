@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PriemChecker.Abstractions;
-using PriemCheckerLibrary;
+using PriemChecker.Domain;
+using PriemChecker.Persistence;
 
-namespace ConsolePriemChecker
+namespace PriemChecker.Console
 {
     class Program
     {
@@ -17,7 +18,7 @@ namespace ConsolePriemChecker
             if (args.Length==0)
             {
                 priemKandidaat = new Random(0).Next();
-                Console.WriteLine("Geen getal meegegeven, we gebruiken random getal '" + priemKandidaat + "'.");
+                System.Console.WriteLine("Geen getal meegegeven, we gebruiken random getal '" + priemKandidaat + "'.");
             }
             else
             {
@@ -54,7 +55,7 @@ namespace ConsolePriemChecker
             var isPriem = priemChecker.IsPriemgetal(priemKandidaat);
             // int aantalLoops = 0;
             // var isPriem = primeTester.IsPriemgetal(priemKandidaat, aantalLoops);
-            Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));
+            System.Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));
             // Console.WriteLine("Aantal loops: " + aantalLoops);
         }
     }

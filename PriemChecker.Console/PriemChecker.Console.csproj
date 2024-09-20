@@ -6,7 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <RootNamespace>ConsolePriemChecker</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,7 +15,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PriemCheckerLibrary\PriemCheckerLibrary.csproj" />
+      <ProjectReference Include="..\PriemChecker.Domain\PriemChecker.Domain.csproj" />
+      <ProjectReference Include="..\PriemChecker.Persistence\PriemChecker.Persistence.csproj" />
+      <ProjectReference Include="..\PriemChecker.Web\PriemChecker.Web.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,7 +1,7 @@
 using Open.Numeric.Primes;
 using PriemChecker.Abstractions;
 
-namespace PriemCheckerLibrary;
+namespace PriemChecker.Domain;
 
 public class NuGetPriemChecker: IPriemChecker
 {

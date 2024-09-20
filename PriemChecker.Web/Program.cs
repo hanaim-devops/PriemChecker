@@ -1,9 +1,10 @@
-using PriemCheckerLibrary;
+using PriemChecker.Abstractions;
+using PriemChecker.Domain;
+using PriemChecker.Persistence;
 
-namespace WebPriemChecker;
+namespace PriemChecker.Web;
 
 using Microsoft.EntityFrameworkCore;
-using PriemChecker.Abstractions;
 
 internal class Program
 {
@@ -32,7 +33,10 @@ internal class Program
         {
             var baseChecker = sp.GetRequiredService<NuGetPriemChecker>();
             var context = sp.GetRequiredService<PriemCheckContext>();
-            return new MemoizingPriemChecker(context, baseChecker);
+            
+            // TODO: Add feature toggle voor CDMM 'gemiddeld' niveau.
+            var useMemoization = true;
+            return useMemoization ? new MemoizingPriemChecker(context, baseChecker) : new SimpelPriemChecker();
         });
 
         var app = builder.Build();
