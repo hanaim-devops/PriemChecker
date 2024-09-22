@@ -1,4 +1,6 @@
+using System.Numerics;
 using JetBrains.Annotations;
+using PriemChecker.Abstractions;
 using Xunit;
 
 namespace PriemChecker.Domain.Tests;
@@ -11,10 +13,11 @@ public class PriemCheckerTest
     [Fact]
     public void TestPrimeNumberIsCheckedAsPrime()
     {
-        var actual = sut.IsPriemgetal(12037);
+        var kandidaat = new BigInteger(12037);
+        var actual = sut.IsPriemgetal(kandidaat);
         var expected = true;
         
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual.IsPriemgetal);
     }
     
     [Fact]
@@ -23,7 +26,7 @@ public class PriemCheckerTest
         var actual = sut.IsPriemgetal(12036);
         var expected = false;
         
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual.IsPriemgetal);
     }
 
 }

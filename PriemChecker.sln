@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Console", "PriemChecker.Console\PriemChecker.Console.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Cli", "PriemChecker.Cli\PriemChecker.Cli.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Persistence", "PriemChecker.Persistence\PriemChecker.Persistence.csproj", "{8DA0FC15-34E2-4876-9E56-F89677C96E88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Abstractions", "PriemChecker.Abstractions\PriemChecker.Abstractions.csproj", "{1F211005-ECDA-4293-AB2A-9204EE330D3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5AC0F93D-AE72-43BE-98E1-0CF33B5BD630}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{92D4DD3B-3F44-4B04-9D0A-D60330D9D88A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +52,9 @@ Global
 		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5AC0F93D-AE72-43BE-98E1-0CF33B5BD630} = {DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}
+		{92D4DD3B-3F44-4B04-9D0A-D60330D9D88A} = {5AC0F93D-AE72-43BE-98E1-0CF33B5BD630}
 	EndGlobalSection
 EndGlobal

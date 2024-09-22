@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using PriemChecker.Abstractions;
 using PriemChecker.Domain;
 using PriemChecker.Persistence;
 
-namespace PriemChecker.Console
+namespace PriemChecker.Cli
 {
     class Program
     {
@@ -29,11 +31,25 @@ namespace PriemChecker.Console
                     // var isGrotePriem = primeTester.IsPriemgetal(grotePriemKandidaat);
                 }
             }
+            
+            // Bouw de configuratie door het appsettings.json bestand te laden
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()  // Voor eventueel omgevingsvariabelen
+                .Build();
+
+            // Lees waarden uit de configuratie
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var useMemoisation = bool.Parse(configuration["AppSettings:UseMemoisation"] ?? "False");
+
+            // Console.WriteLine($"Connection String: {connectionString}");
+            Console.WriteLine($"UseMemoisation: {useMemoisation}");
 
             // Composition Root - Configureer alle afhankelijkheden via DI.
             var serviceProvider = new ServiceCollection()
                 .AddDbContext<PriemCheckContext>(options =>
-                    options.UseSqlServer("Server=localhost,1433;Database=PriemCheckDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True;"))
+                    options.UseSqlServer(connectionString))
 
                 // Register the base implementation of IPriemChecker
                 .AddScoped<NuGetPriemChecker>()
@@ -43,7 +59,10 @@ namespace PriemChecker.Console
                 {
                     var baseChecker = sp.GetRequiredService<NuGetPriemChecker>();  // Basisimplementatie
                     var context = sp.GetRequiredService<PriemCheckContext>();      // DB context
-                    return new MemoizingPriemChecker(context, baseChecker);        // Teruggeven van de decorator
+                    IPriemChecker priemChecker = useMemoisation ? 
+                        new MemoizingPriemChecker(context, baseChecker) 
+                        : new NuGetPriemChecker();
+                    return priemChecker;
                 })
                 .BuildServiceProvider();
             
@@ -53,9 +72,10 @@ namespace PriemChecker.Console
 
             // Voorbeeld: gebruik de service
             var isPriem = priemChecker.IsPriemgetal(priemKandidaat);
+
             // int aantalLoops = 0;
             // var isPriem = primeTester.IsPriemgetal(priemKandidaat, aantalLoops);
-            System.Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem ? "JA" : "NEE"));
+            System.Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem.IsPriemgetal ? "JA" : "NEE"));
             // Console.WriteLine("Aantal loops: " + aantalLoops);
         }
     }

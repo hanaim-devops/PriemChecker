@@ -17,13 +17,13 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        //Console.WriteLine("Using connection string: '" + connectionString +"'."); // Tijdelijke log.
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        Console.WriteLine("Using connection string: '" + connectionString +"'.");
 
         // TODO: De (DB) connection string gebruikt TrustServerCertificate=True, maar dat kan op productie niet.
-        // Dan moet er een geldig NON self-signed certificate zijn, of we iets regelen dat self signed wel werkt ;)
+        // TODO: Dan moet er een geldig NON self-signed certificate zijn, of we iets regelen dat self signed wel werkt ;)
         builder.Services.AddDbContext<PriemCheckContext>(options =>
-            options.UseSqlServer("connectionString"));
+            options.UseSqlServer(connectionString));
 
         // Register the base implementation
         builder.Services.AddScoped<NuGetPriemChecker>();
@@ -50,13 +50,14 @@ internal class Program
 
         app.UseHttpsRedirection();
 
-        app.MapPost("/isPriem", (IPriemChecker priemgetalChecker, int getal) =>
-            {
-                return priemgetalChecker.IsPriemgetal(getal);
-            })
+        app.MapPost("/isPriem", (IPriemChecker priemgetalChecker, int getal) => priemgetalChecker.IsPriemgetal(getal))
             .WithName("IsPriem")
             .WithOpenApi();
 
+        // app.MapGet("/priemGetallem", (PriemCheckRepository priemCheckRepository) => priemCheckRepository.HaalAlleResultatenOpAsync())
+        //     .WithName("PriemGetallen")
+        //     .WithOpenApi();
+        
         app.MapPost("helloWorld", () => "Hello World!")
             .WithName("Hello World")
             .WithOpenApi();

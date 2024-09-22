@@ -9,11 +9,11 @@
     </PropertyGroup>
     
     <ItemGroup>
-      <PackageReference Include="BigInteger" Version="1.0.7" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
       <PackageReference Include="Open.Numeric.Primes" Version="4.0.2" />
+      <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     </ItemGroup>
     
     <ItemGroup>

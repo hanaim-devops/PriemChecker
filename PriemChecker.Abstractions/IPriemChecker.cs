@@ -1,6 +1,8 @@
+using System.Numerics;
+
 namespace PriemChecker.Abstractions;
 
 public interface IPriemChecker
 {
-    Boolean IsPriemgetal(int kandidaat);
+    PriemCheckResultaat IsPriemgetal(BigInteger kandidaat);
 }

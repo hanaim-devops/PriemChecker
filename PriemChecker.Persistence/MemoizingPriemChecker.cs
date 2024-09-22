@@ -1,3 +1,4 @@
+using System.Numerics;
 using PriemChecker.Abstractions;
 
 namespace PriemChecker.Persistence;
@@ -20,22 +21,36 @@ public class MemoizingPriemChecker: IPriemChecker {
         _innerService = innerService;
     }
     
-    public bool IsPriemgetal(int number)
+    public PriemCheckResultaat IsPriemgetal(BigInteger number)
     {
+        Console.WriteLine($"IsPriemgetal: {number}");
         // Check of resultaat al in database staat
         var existingResult = _context.PriemCheckResultaten
             .FirstOrDefault(r => r.PriemKandidaatWaarde == number);
 
         if (existingResult != null)
         {
-            return existingResult.IsPriemgetal;
+            return new PriemCheckResultaat(
+                existingResult.PriemKandidaatWaarde, 
+                existingResult.IsPriemgetal, 
+                existingResult.AantalLoops,
+                null
+                );
         }
 
         // Anders de interne service gebruiken om te berekenen.
         var result = _innerService.IsPriemgetal(number);
 
+        var huidigeDateTime = DateTime.UtcNow;
+        
         // Resultaat opslaan in database
-        _context.PriemCheckResultaten.Add(new PriemCheckResultaatEntity(number, result));
+        _context.PriemCheckResultaten.Add(new PriemCheckResultaatEntity(
+            number,
+            result.IsPriemgetal,
+            huidigeDateTime,
+            result.AantalSecondenOmTeBerekenen,
+            result.AantalLoops
+            ));
         _context.SaveChanges();
 
         return result;

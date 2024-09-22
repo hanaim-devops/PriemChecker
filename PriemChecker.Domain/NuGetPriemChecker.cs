@@ -1,18 +1,23 @@
+using System.Numerics;
 using Open.Numeric.Primes;
+
 using PriemChecker.Abstractions;
 
 namespace PriemChecker.Domain;
 
 public class NuGetPriemChecker: IPriemChecker
 {
-    public Boolean IsPriemgetal(int kandidaat)
+    public PriemCheckResultaat IsPriemgetal(double kandidaat)
     {
-        return Number.IsPrime(kandidaat);
+        var isPriemgetal = Number.IsPrime(kandidaat);
+        return new PriemCheckResultaat((BigInteger) kandidaat, isPriemgetal, null, null);
     }
 
-    public Boolean IsPriemgetal(BigInteger kandidaat)
+    public PriemCheckResultaat IsPriemgetal(BigInteger kandidaat)
     {
-        return kandidaat.isProbablePrime(1);
+        var isPriemgetal = Number.IsPrime(kandidaat);
+        // var isPriemgetal = kandidaat.isProbablePrime(1);
+        return new PriemCheckResultaat(kandidaat, isPriemgetal, null, null);
     }
 
 }

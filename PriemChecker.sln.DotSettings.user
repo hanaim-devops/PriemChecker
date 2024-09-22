@@ -3,7 +3,5 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestProjectMapping/=3A370E8C_002DB5A5_002D43FD_002D8D80_002D3D58F0DE6EB4/@EntryIndexedValue">ConsolePrimeTester.Tests</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestTemplateMapping/=xUnit/@EntryIndexedValue">33ff99d8-b1ad-4ed5-a4fd-376b97c2c841</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3c85aebe_002Da15f_002D460e_002D82e6_002D88d40e885914/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="test" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::86CEE594-E1A9-48AB-A690-32DB1FEC453B::net8.0::PriemCheckerLibrary.Tests.PriemCheckerTest&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/bartvanderwal/Library/CloudStorage/OneDrive-HAN/MDO/PriemChecker/PriemChecker.Domain.Tests" Presentation="&amp;lt;PriemChecker.Domain.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
