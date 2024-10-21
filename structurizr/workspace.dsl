@@ -1,49 +1,75 @@
-workspace {
+workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
 
     !identifiers hierarchical
-    
-    // Algemene informatie over het model en diagram.
+
     model {
-        
-        // De software die we willen beschrijven: PriemChecker
-        softwareSystem prChecker "PriemChecker Systeem" {
+        // Gebruiker van het PriemChecker systeem
+        gebruiker = person "Gebruiker" {
+            description "De persoon die een getal invoert om te controleren of het een priemgetal is."
+        }
+
+        // PriemChecker software systeem
+        prChecker = softwareSystem "PriemChecker Systeem" {
             description "Een systeem dat controleert of een getal een priemgetal is."
 
-            // De primaire gebruiker van het systeem
-            person gebruiker "Gebruiker" {
-                description "De persoon die een getal invoert om te controleren of het een priemgetal is."
+            // Containers binnen het PriemChecker systeem
+            webApp = container "Web Applicatie" {
+                description "De front-end applicatie die door de gebruiker wordt gebruikt om getallen in te voeren."
+                technology "React"
             }
 
-            // Externe systemen waarmee PriemChecker mogelijk communiceert
-            softwareSystem exApi "Externe API voor wiskundige functies" {
-                description "Een API die wiskundige berekeningen ondersteunt zoals het vinden van priemgetallen."
+            db = container "Database" {
+                description "Slaat resultaten op van priemgetal-controles."
+                technology "PostgreSQL"
+                tags "Database"
             }
-
-            // Relaties tussen het PriemChecker systeem en gebruikers/externe systemen
-            gebruiker -> prChecker "Voert een getal in om te controleren of het een priemgetal is"
-            prChecker -> exApi "Vraagt wiskundige berekeningen op voor complexe getallen"        
         }
+
+        // Externe API (optioneel)
+        externalApi = softwareSystem "Externe Wiskunde API" {
+            description "Een externe API die complexe wiskundige berekeningen uitvoert."
+        }
+
+        // Relaties tussen de elementen
+        gebruiker -> prChecker.webApp "Gebruikt om getallen in te voeren"
+        prChecker.webApp -> prChecker.db "Leest en schrijft resultaten"
+        prChecker.webApp -> externalApi "Vraagt complexe berekeningen aan"
     }
 
-    // Views: definieer het contextdiagram (C4 niveau 1)
     views {
-        systemContext prChecker {
+        // Context diagram voor het PriemChecker systeem
+        systemContext prChecker "PriemChecker Context Diagram" {
             include *
-            # autolayout lr
-            animation gebruiker -> prChecker
-            animation prChecker -> exApi
+            autolayout lr
         }
 
-        // Stijl voor het diagram
-        theme default
+        // Container diagram voor het PriemChecker systeem
+        container prChecker "PriemChecker Container Diagram" {
+            include *
+            autolayout lr
+        }
+
+        // Stijlen voor de weergave van elementen
+        styles {
+            element "Person" {
+                background #d34407
+                shape person
+            }
+            element "Software System" {
+                background #f86628
+            }
+            element "Container" {
+                background #f88728
+            }
+            element "Database" {
+                shape cylinder
+                background #ffbd00
+            }
+        }
     }
 
-    // Voor diagramgeneratie
-    documentation prChecker "Context" {
-        format markdown
-        content """
-        Dit diagram toont het PriemChecker systeem in context. Het PriemChecker systeem wordt gebruikt door een gebruiker die getallen invoert om te bepalen of ze priem zijn. 
-        Het systeem kan indien nodig gebruik maken van een externe API voor geavanceerde wiskundige functies.
-        """
+    configuration {
+        scope softwareSystem
     }
+
 }
