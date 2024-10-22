@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Transactions;
 using PriemChecker.Abstractions;
 
 namespace PriemChecker.Persistence;
@@ -24,9 +25,17 @@ public class MemoizingPriemChecker: IPriemChecker {
     public PriemCheckResultaat IsPriemgetal(BigInteger number)
     {
         Console.WriteLine($"IsPriemgetal: {number}");
-        // Check of resultaat al in database staat
-        var existingResult = _context.PriemCheckResultaten
-            .FirstOrDefault(r => r.PriemKandidaatWaarde == number);
+        // Check of resultaat al in database staat.
+        PriemCheckResultaatEntity existingResult = null;
+        try
+        {
+            existingResult = _context.PriemCheckResultaten
+                .FirstOrDefault(r => r.PriemKandidaatWaarde == number);
+        }
+        catch (Microsoft.Data.SqlClient.SqlException e)
+        {
+            throw new PriemDatabaseException("Database lijkt offline.");
+        }
 
         if (existingResult != null)
         {

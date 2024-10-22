@@ -10,6 +10,8 @@ namespace PriemChecker.Cli
 {
     class Program
     {
+        // TODO: Command line parameters zoals --memoisation false parsen
+        // Dit kan met behulp van System.Commandline package; zie: https://learn.microsoft.com/en-us/dotnet/standard/commandline/
         public static void Main(string[] args)
         {
             int priemKandidaat = 0;
@@ -20,7 +22,7 @@ namespace PriemChecker.Cli
             if (args.Length==0)
             {
                 priemKandidaat = new Random(0).Next();
-                System.Console.WriteLine("Geen getal meegegeven, we gebruiken random getal '" + priemKandidaat + "'.");
+                Console.WriteLine("Geen getal meegegeven, we gebruiken random getal '" + priemKandidaat + "'.");
             }
             else
             {
@@ -76,7 +78,8 @@ namespace PriemChecker.Cli
             // int aantalLoops = 0;
             // var isPriem = primeTester.IsPriemgetal(priemKandidaat, aantalLoops);
             System.Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem.IsPriemgetal ? "JA" : "NEE"));
-            // Console.WriteLine("Aantal loops: " + aantalLoops);
+            Console.WriteLine("Aantal loops: " + isPriem.AantalLoops + "aantal millisecs: " + isPriem.AantalSecondenOmTeBerekenen);
+            
         }
     }
 }

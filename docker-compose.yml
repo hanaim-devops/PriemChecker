@@ -7,10 +7,12 @@
       - MSSQL_SA_PASSWORD=Your_password123
     ports:
       - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql  # Persistent volume for SQL Server data
     healthcheck:
       test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Your_password123", "-Q", "SELECT 1"]
-      interval: 10s
-      retries: 10
+      interval: 6s
+      retries: 3
     networks:
       - priemchecker-network
 
@@ -38,6 +40,18 @@
     ports:
       - "5062:80"  # Maps port 5062 on the host to port 80 in the container
 
+  structurizr-lite:
+    image: structurizr/lite
+    ports:
+      - "8080:8080"  # Expose Structurizr Lite on port 8080
+    volumes:
+      - ./structurizr:/usr/local/structurizr  # Mount the local structurizr folder
+    environment:
+      - STRUCTURIZR_WORKSPACE_PATH=/usr/local/structurizr/workspace.dsl
+
 networks:
   priemchecker-network:
     driver: bridge
+    
+volumes:
+  sqlserver-data:  # Persistent volume for SQL Server

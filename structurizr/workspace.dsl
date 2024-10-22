@@ -1,27 +1,74 @@
-workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
+workspace "PriemChecker" "Context, Container en Component diagrammen voor PriemChecker systeem" {
 
     !identifiers hierarchical
 
     model {
-
-        // Gebruiker van het PriemChecker systeem
-        gebruiker = person "Gebruiker" {
-            description "De persoon die een getal invoert om te controleren of het een priemgetal is."
+        // Gebruikers
+        anoniemeGebruiker = person "Anonieme Gebruiker" {
+            description "Gebruiker die alleen int waardes kan opvragen."
+        }
+        
+        ingelogdeGebruiker = person "Ingelogde Gebruiker" {
+            description "Gebruiker die BigIntegers kan opvragen."
+        }
+        
+        privilegedGebruiker = person "Privileged User (Prime Hacker)" {
+            description "Gebruiker die BigIntegers kan opvragen en al een priemgetal heeft geraden."
+        }
+        
+        adminGebruiker = person "Admin Gebruiker" {
+            description "Beheerder die statistieken kan opvragen."
         }
 
-        // PriemChecker software systeem
+        // Extern systeem
+        superComputer = softwareSystem "Supercomputer Prime" {
+            description "Externe supercomputer voor het berekenen van grote priemgetallen."
+        }
+
+        // PriemChecker Systeem
         prChecker = softwareSystem "PriemChecker Systeem" {
             description "Een systeem dat controleert of een getal een priemgetal is."
-
+            
             // Containers binnen het PriemChecker systeem
-            webApp = container "Web Applicatie" {
-                description "De front-end applicatie die door de gebruiker wordt gebruikt om getallen in te voeren."
-                technology "React"
+            frontEnd = container "Front-end (Nginx)" {
+                description "De front-end die draait op Nginx en communiceert met de back-end."
+                technology "Nginx"
             }
 
-            db = container "Database" {
-                description "Slaat resultaten op van priemgetal-controles."
-                technology "PostgreSQL"
+            backEnd = container "Back-end (Java Spring Boot)" {
+                description "Bevat de logica voor het controleren van priemgetallen en communiceert met de database."
+                technology "Spring Boot"
+
+                // Definieer componenten binnen de backEnd container
+                restApi = component "RESTful API" {
+                    description "Stelt API endpoints beschikbaar en voert autorisatie uit."
+                    technology "Spring MVC"
+                }
+
+                consoleApp = component "Console Applicatie" {
+                    description "Biedt toegang tot de priemgetallen logica zonder verdere autorisatie."
+                    technology "Java"
+                }
+
+                priemService = component "PriemService" {
+                    description "Business logica voor het controleren of een getal een priemgetal is."
+                    technology "Java"
+                }
+
+                authService = component "Authenticatie Service" {
+                    description "Beheert gebruikersnamen en rollen."
+                    technology "Spring Security"
+                }
+
+                dataLayer = component "Data Laag" {
+                    description "Beheert de verbinding met SQL Server en bevat Entity Framework code first."
+                    technology "Spring Data JPA"
+                }
+            }
+
+            database = container "Database (SQL Server)" {
+                description "Slaat de opgevraagde priemgetallen en metadata op."
+                technology "SQL Server"
                 tags "Database"
             }
         }
@@ -29,23 +76,32 @@ workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
         // Externe API (optioneel)
         externalApi = softwareSystem "Externe Wiskunde API" {
             description "Een externe API die complexe wiskundige berekeningen uitvoert."
+            tags "Extern"
         }
 
         // Relaties tussen de elementen
-        gebruiker -> prChecker.webApp "Gebruikt om getallen in te voeren"
-        prChecker.webApp -> prChecker.db "Leest en schrijft resultaten"
-        prChecker.webApp -> externalApi "Vraagt complexe berekeningen aan"
+        anoniemeGebruiker -> prChecker.frontEnd "Gebruikt om integer priemgetallen  te checken"
+        ingelogdeGebruiker -> prChecker.frontEnd "Gebruikt om BigInteger priemgetallen te checken"
+        privilegedGebruiker -> prChecker.frontEnd "Gebruikt om BigInteger priemgetallen te checken (eerder geraden)"
+        prChecker.backEnd -> prChecker.database "Leest en schrijft resultaten"
+        prChecker.backEnd -> externalApi "Vraagt complexe berekeningen aan"
     }
 
     views {
-        // Context diagram voor het PriemChecker systeem
+        // Voeg System Context diagram toe
         systemContext prChecker "PriemCheckerContextDiagram" {
             include *
             autolayout lr
+            description "Legenda:\nPerson: Gebruiker van het systeem\nSoftware System: Het PriemChecker systeem\nExtern: Externe systemen zoals de Wiskunde API"
         }
-
-        // Container diagram voor het PriemChecker systeem
+    
+        // Voeg Container diagram toe
         container prChecker "PriemCheckerContainerDiagram" {
+            include *
+            autolayout lr
+        }
+        
+        component prChecker.backEnd "PriemCheckerComponentDiagram" {
             include *
             autolayout lr
         }
@@ -65,16 +121,24 @@ workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
                 background #438dd5
                 color #ffffff
             }
+            element "Component" {
+                background #85bbf0
+                color #000000
+            }
             element "Database" {
                 shape cylinder
                 background #438dd5
+                color #ffffff
+            }
+            element "Extern" {
+               background #999999
                 color #ffffff
             }
         }
     }
 
     configuration {
-        scope softwareSystem
+        scope softwaresystem
+        # theme default
     }
-
 }

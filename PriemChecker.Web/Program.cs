@@ -50,18 +50,44 @@ internal class Program
 
         app.UseHttpsRedirection();
 
-        app.MapPost("/isPriem", (IPriemChecker priemgetalChecker, int getal) => priemgetalChecker.IsPriemgetal(getal))
+        app.MapGet("/helloWorld", HelloWorldHandler.SayHello)
+            .WithName("Hello World")
+            .WithOpenApi();
+        app.Run();
+
+        app.MapPost("/isPriem", PriemCheckerHandler.IsPriem)
             .WithName("IsPriem")
             .WithOpenApi();
 
-        // app.MapGet("/priemGetallem", (PriemCheckRepository priemCheckRepository) => priemCheckRepository.HaalAlleResultatenOpAsync())
-        //     .WithName("PriemGetallen")
-        //     .WithOpenApi();
-        
-        app.MapPost("helloWorld", () => "Hello World!")
-            .WithName("Hello World")
+        // Uncomment if you want to add the PriemCheckRepository endpoint
+        app.MapGet("/priemGetallem", PriemRepositoryHandler.HaalAllePriemGetallenOpAsync)
+            .WithName("PriemGetallen")
             .WithOpenApi();
-        
-        app.Run();
+
+    }
+}
+
+public class HelloWorldHandler
+{
+    public static IResult SayHello()
+    {
+        return Results.Ok("Hello World!");
+    }
+}
+
+public class PriemCheckerHandler
+{
+    public static IResult IsPriem(IPriemChecker priemgetalChecker, int getal)
+    {
+        var result = priemgetalChecker.IsPriemgetal(getal);
+        return Results.Ok(result);
+    }
+}
+public class PriemRepositoryHandler
+{
+    public static async Task<IResult> HaalAllePriemGetallenOpAsync(PriemCheckRepository priemCheckRepository)
+    {
+        var resultaten = await priemCheckRepository.HaalAlleResultatenOpAsync();
+        return Results.Ok(resultaten);
     }
 }

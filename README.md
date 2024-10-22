@@ -14,15 +14,13 @@ Om *branch by abstraction** te laten zien zijn er 3 gebruikes van de priem 'serv
 
 Later breiden we dit uit met een database voor persistentie met een 'code first' ORM met migrations (Entity Framework Core in C# of voor Java/Spring boot variant JPA/Hibernate met Flyway voor ook migrations)
 
-In afwezigheid van een echte opdrachtgever zie ik Wikipedia als Business expert.
-Dit is minder willekeurig dan zelf de termen verzinnen.
+In afwezigheid van een echte opdrachtgever zie ik Wikipedia als Business expert. Dit is minder 'willekeurig' dan zelf de termen verzinnen.
 
-De Engels-Amerikaans talige Wikipedia noemt testen voor priemgetallen testen het 'primality checking'.
+De Engels-Amerikaans-talige Wikipedia noemt testen voor priemgetallen testen het 'primality checking'.
 
 Aangezien de opdracht in het Nederlands is gebruik ik ook Nederlands, maar gebruik ik wel de uit het Engels afkomstige term 'checken'. Prettige bijkomstigheid is dat nu de `xUnit` naamgeving postfix `-test` in bestandsnamen anders is, en dat het geen PriemgetalTesterTest wordt, maar `PriemgetalCheckerTest` - https://nl.wikipedia.org/wiki/Priemgetal
 
 > "The property of being prime is called primality. A simple but slow method of checking the primality of a given number n, called trial division, ..." - https://en.wikipedia.org/wiki/Prime_number
-
 
 ## EF core, code first ORM with migrations
 
