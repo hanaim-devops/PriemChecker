@@ -11,6 +11,29 @@ namespace PriemChecker.Persistence.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Stap 1: Voeg een nieuwe tijdelijke kolom toe
+            migrationBuilder.AddColumn<double>(
+                name: "NewId",
+                table: "PriemCheckResultaten",
+                type: "float",
+                nullable: false,
+                defaultValue: 0.0);
+
+            // Stap 2: Kopieer de waarden van de originele Id kolom naar de nieuwe kolom
+            migrationBuilder.Sql("UPDATE PriemCheckResultaten SET NewId = Id");
+
+            // Stap 3: Verwijder de originele Id kolom
+            migrationBuilder.DropColumn(
+                name: "Id",
+                table: "PriemCheckResultaten");
+
+            // Stap 4: Hernoem de nieuwe kolom naar Id
+            migrationBuilder.RenameColumn(
+                name: "NewId",
+                table: "PriemCheckResultaten",
+                newName: "Id");
+
+            // Wijzig het type van PriemKandidaatWaarde naar nvarchar(max)
             migrationBuilder.AlterColumn<string>(
                 name: "PriemKandidaatWaarde",
                 table: "PriemCheckResultaten",
@@ -19,15 +42,7 @@ namespace PriemChecker.Persistence.Migrations
                 oldClrType: typeof(int),
                 oldType: "int");
 
-            migrationBuilder.AlterColumn<double>(
-                name: "Id",
-                table: "PriemCheckResultaten",
-                type: "float",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
-
+            // Voeg de overige kolommen toe
             migrationBuilder.AddColumn<double>(
                 name: "AantalLoops",
                 table: "PriemCheckResultaten",
@@ -51,6 +66,7 @@ namespace PriemChecker.Persistence.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            // Verwijder de nieuw toegevoegde kolommen
             migrationBuilder.DropColumn(
                 name: "AantalLoops",
                 table: "PriemCheckResultaten");
@@ -63,6 +79,24 @@ namespace PriemChecker.Persistence.Migrations
                 name: "UitgerekendOp",
                 table: "PriemCheckResultaten");
 
+            // Voeg de oorspronkelijke Id kolom weer toe
+            migrationBuilder.AddColumn<int>(
+                name: "Id",
+                table: "PriemCheckResultaten",
+                type: "int",
+                nullable: false,
+                defaultValue: 0)
+                .Annotation("SqlServer:Identity", "1, 1");
+
+            // Kopieer de waarden van de nieuwe kolom terug naar de originele kolom (optioneel als je een down migratie nodig hebt)
+            migrationBuilder.Sql("UPDATE PriemCheckResultaten SET Id = CAST(NewId AS int)");
+
+            // Verwijder de tijdelijke kolom
+            migrationBuilder.DropColumn(
+                name: "NewId",
+                table: "PriemCheckResultaten");
+
+            // Wijzig PriemKandidaatWaarde terug naar int
             migrationBuilder.AlterColumn<int>(
                 name: "PriemKandidaatWaarde",
                 table: "PriemCheckResultaten",
@@ -70,15 +104,6 @@ namespace PriemChecker.Persistence.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "PriemCheckResultaten",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(double),
-                oldType: "float")
-                .Annotation("SqlServer:Identity", "1, 1");
         }
     }
 }

@@ -96,16 +96,16 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_password123" \
 
 Je kunt deze dan benaderen via bijvoorbeeld de Database explorer in Rider (onder `View` -> `Tool windows` -> `Database`). Deze kun je de connection string geven die in `appSettings.Development.json` ook staat voor gebruik door de applicatie, en dan connect hij.
 
-Hier een voorbeeld van genereren van een (data) migration:
+Hier een voorbeeld van genereren van een (data) migration (doe dit vanuit de root `PriemChecker` folder):
 
-```
-dotnet ef migrations add IdVeldInPriemCheckResultaat --project PriemCheckerLibrary --startup-project WebPriemChecker
+```console
+dotnet ef migrations add IdVeldInPriemCheckResultaat --project PriemChecker.Domein --startup-project PriemChecker.Web
 
 ```
 
 En hier een voorbeeld van uitvoeren van deze migratie:
 
-```
+```console
 dotnet ef database update --project PriemCheckerLibrary --startup-project WebPriemChecker
 ```
 
