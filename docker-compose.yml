@@ -45,9 +45,9 @@
     ports:
       - "8080:8080"  # Expose Structurizr Lite on port 8080
     volumes:
-      - ./structurizr/workspace.dsl:/usr/local/structurizr/workspace.dsl:ro
-    environment:
-      - STRUCTURIZR_WORKSPACE_PATH=/usr/local/structurizr/workspace.dsl
+      - ./structurizr:/usr/local/structurizr
+    #environment:
+    #  - STRUCTURIZR_WORKSPACE_PATH=/usr/local/structurizr/workspace.dsl
 
 networks:
   priemchecker-network:

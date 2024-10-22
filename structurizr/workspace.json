@@ -1,0 +1,463 @@
+{
+  "configuration" : {
+    "scope" : "SoftwareSystem"
+  },
+  "description" : "Context, Container en Component diagrammen voor PriemChecker systeem",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-ui",
+  "lastModifiedDate" : "2024-10-22T20:12:37Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Gebruiker die alleen int waardes kan opvragen.",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "Anonieme Gebruiker",
+      "properties" : {
+        "structurizr.dsl.identifier" : "anoniemegebruiker"
+      },
+      "relationships" : [ {
+        "description" : "Gebruikt om integer priemgetallen  te checken",
+        "destinationId" : "7",
+        "id" : "22",
+        "properties" : {
+          "structurizr.dsl.identifier" : "e7293449-4555-4631-976e-948aa6e78c70"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Gebruikt om integer priemgetallen  te checken",
+        "destinationId" : "6",
+        "id" : "23",
+        "linkedRelationshipId" : "22",
+        "sourceId" : "1"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Gebruiker die BigIntegers kan opvragen.",
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Ingelogde Gebruiker",
+      "properties" : {
+        "structurizr.dsl.identifier" : "ingelogdegebruiker"
+      },
+      "relationships" : [ {
+        "description" : "Gebruikt om BigInteger priemgetallen te checken",
+        "destinationId" : "7",
+        "id" : "24",
+        "properties" : {
+          "structurizr.dsl.identifier" : "a216ed9b-d002-4794-8f15-b576d5f1ea10"
+        },
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Gebruikt om BigInteger priemgetallen te checken",
+        "destinationId" : "6",
+        "id" : "25",
+        "linkedRelationshipId" : "24",
+        "sourceId" : "2"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Gebruiker die BigIntegers kan opvragen en al een priemgetal heeft geraden.",
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "Privileged User (Prime Hacker)",
+      "properties" : {
+        "structurizr.dsl.identifier" : "privilegedgebruiker"
+      },
+      "relationships" : [ {
+        "description" : "Gebruikt om BigInteger priemgetallen te checken (eerder geraden)",
+        "destinationId" : "7",
+        "id" : "26",
+        "properties" : {
+          "structurizr.dsl.identifier" : "97d592ec-d3c8-4cd4-8ff8-b2b8966bc54f"
+        },
+        "sourceId" : "3",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Gebruikt om BigInteger priemgetallen te checken (eerder geraden)",
+        "destinationId" : "6",
+        "id" : "27",
+        "linkedRelationshipId" : "26",
+        "sourceId" : "3"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Beheerder die statistieken kan opvragen.",
+      "id" : "4",
+      "location" : "Unspecified",
+      "name" : "Admin Gebruiker",
+      "properties" : {
+        "structurizr.dsl.identifier" : "admingebruiker"
+      },
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Externe supercomputer voor het berekenen van grote priemgetallen.",
+      "documentation" : { },
+      "id" : "5",
+      "location" : "Unspecified",
+      "name" : "Supercomputer Prime",
+      "properties" : {
+        "structurizr.dsl.identifier" : "supercomputer"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "containers" : [ {
+        "description" : "De front-end die draait op Nginx en communiceert met de back-end.",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Front-end (Nginx)",
+        "properties" : {
+          "structurizr.dsl.identifier" : "prchecker.frontend"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Nginx"
+      }, {
+        "description" : "Slaat de opgevraagde priemgetallen en metadata op.",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "Database (SQL Server)",
+        "properties" : {
+          "structurizr.dsl.identifier" : "prchecker.database"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "SQL Server"
+      }, {
+        "components" : [ {
+          "description" : "Biedt toegang tot de priemgetallen logica zonder verdere autorisatie.",
+          "documentation" : { },
+          "id" : "10",
+          "name" : "Console Applicatie",
+          "properties" : {
+            "structurizr.dsl.identifier" : "prchecker.backend.consoleapp"
+          },
+          "relationships" : [ {
+            "description" : "Gebruikt de priemgetallen logica",
+            "destinationId" : "13",
+            "id" : "15",
+            "properties" : {
+              "structurizr.dsl.identifier" : "2f86a3df-a298-4e06-8f57-e2413704dd06"
+            },
+            "sourceId" : "10",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component",
+          "technology" : "Java"
+        }, {
+          "description" : "Stelt API endpoints beschikbaar en voert autorisatie uit.",
+          "documentation" : { },
+          "id" : "11",
+          "name" : "RESTful API",
+          "properties" : {
+            "structurizr.dsl.identifier" : "prchecker.backend.restapi"
+          },
+          "relationships" : [ {
+            "description" : "Stuurt priemgetal verzoeken naar de service",
+            "destinationId" : "13",
+            "id" : "16",
+            "properties" : {
+              "structurizr.dsl.identifier" : "8990416a-7c39-4dd9-8dea-1d73a15e8abf"
+            },
+            "sourceId" : "11",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Controleert credentials/tokens via de authenticatieservice",
+            "destinationId" : "12",
+            "id" : "17",
+            "properties" : {
+              "structurizr.dsl.identifier" : "fc091fd9-3818-40df-9476-ae3e2b89bf15"
+            },
+            "sourceId" : "11",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component",
+          "technology" : "Spring MVC"
+        }, {
+          "description" : "Beheert gebruikersnamen en rollen.",
+          "documentation" : { },
+          "id" : "12",
+          "name" : "Authenticatie Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "prchecker.backend.authservice"
+          },
+          "tags" : "Element,Component",
+          "technology" : "Spring Security"
+        }, {
+          "description" : "Business logica voor het controleren of een getal een priemgetal is.",
+          "documentation" : { },
+          "id" : "13",
+          "name" : "PriemService",
+          "properties" : {
+            "structurizr.dsl.identifier" : "prchecker.backend.priemservice"
+          },
+          "relationships" : [ {
+            "description" : "Verstuurt database verzoeken",
+            "destinationId" : "14",
+            "id" : "18",
+            "properties" : {
+              "structurizr.dsl.identifier" : "fa2c3007-a91f-49a9-8454-47cbf7714d15"
+            },
+            "sourceId" : "13",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component",
+          "technology" : "Java"
+        }, {
+          "description" : "Beheert de verbinding met SQL Server en bevat Entity Framework code first.",
+          "documentation" : { },
+          "id" : "14",
+          "name" : "Data Laag",
+          "properties" : {
+            "structurizr.dsl.identifier" : "prchecker.backend.datalayer"
+          },
+          "relationships" : [ {
+            "description" : "Leest en schrijft resultaten",
+            "destinationId" : "8",
+            "id" : "19",
+            "properties" : {
+              "structurizr.dsl.identifier" : "50f63c2b-ab38-45a4-8b79-f6520ecd5361"
+            },
+            "sourceId" : "14",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component",
+          "technology" : "Spring Data JPA"
+        } ],
+        "description" : "Bevat de logica voor het controleren van priemgetallen en communiceert met de database.",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "Back-end (Java Spring Boot)",
+        "properties" : {
+          "structurizr.dsl.identifier" : "prchecker.backend"
+        },
+        "relationships" : [ {
+          "description" : "Leest en schrijft resultaten",
+          "destinationId" : "8",
+          "id" : "20",
+          "linkedRelationshipId" : "19",
+          "sourceId" : "9"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Spring Boot"
+      } ],
+      "description" : "Een systeem dat controleert of een getal een priemgetal is.",
+      "documentation" : { },
+      "id" : "6",
+      "location" : "Unspecified",
+      "name" : "PriemChecker Systeem",
+      "properties" : {
+        "structurizr.dsl.identifier" : "prchecker"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Een externe API die complexe wiskundige berekeningen uitvoert.",
+      "documentation" : { },
+      "id" : "21",
+      "location" : "Unspecified",
+      "name" : "Externe Wiskunde API",
+      "properties" : {
+        "structurizr.dsl.identifier" : "externalapi"
+      },
+      "tags" : "Element,Software System,Extern"
+    } ]
+  },
+  "name" : "PriemChecker",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICJQcmllbUNoZWNrZXIiICJDb250ZXh0LCBDb250YWluZXIgZW4gQ29tcG9uZW50IGRpYWdyYW1tZW4gdm9vciBQcmllbUNoZWNrZXIgc3lzdGVlbSIgewoKICAgICFpZGVudGlmaWVycyBoaWVyYXJjaGljYWwKCiAgICBtb2RlbCB7CiAgICAgICAgLy8gR2VicnVpa2VycwogICAgICAgIGFub25pZW1lR2VicnVpa2VyID0gcGVyc29uICJBbm9uaWVtZSBHZWJydWlrZXIiIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gIkdlYnJ1aWtlciBkaWUgYWxsZWVuIGludCB3YWFyZGVzIGthbiBvcHZyYWdlbi4iCiAgICAgICAgfQogICAgICAgIAogICAgICAgIGluZ2Vsb2dkZUdlYnJ1aWtlciA9IHBlcnNvbiAiSW5nZWxvZ2RlIEdlYnJ1aWtlciIgewogICAgICAgICAgICBkZXNjcmlwdGlvbiAiR2VicnVpa2VyIGRpZSBCaWdJbnRlZ2VycyBrYW4gb3B2cmFnZW4uIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBwcml2aWxlZ2VkR2VicnVpa2VyID0gcGVyc29uICJQcml2aWxlZ2VkIFVzZXIgKFByaW1lIEhhY2tlcikiIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gIkdlYnJ1aWtlciBkaWUgQmlnSW50ZWdlcnMga2FuIG9wdnJhZ2VuIGVuIGFsIGVlbiBwcmllbWdldGFsIGhlZWZ0IGdlcmFkZW4uIgogICAgICAgIH0KICAgICAgICAKICAgICAgICBhZG1pbkdlYnJ1aWtlciA9IHBlcnNvbiAiQWRtaW4gR2VicnVpa2VyIiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJCZWhlZXJkZXIgZGllIHN0YXRpc3RpZWtlbiBrYW4gb3B2cmFnZW4uIgogICAgICAgIH0KCiAgICAgICAgLy8gRXh0ZXJuIHN5c3RlZW0KICAgICAgICBzdXBlckNvbXB1dGVyID0gc29mdHdhcmVTeXN0ZW0gIlN1cGVyY29tcHV0ZXIgUHJpbWUiIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gIkV4dGVybmUgc3VwZXJjb21wdXRlciB2b29yIGhldCBiZXJla2VuZW4gdmFuIGdyb3RlIHByaWVtZ2V0YWxsZW4uIgogICAgICAgIH0KCiAgICAgICAgLy8gUHJpZW1DaGVja2VyIFN5c3RlZW0KICAgICAgICBwckNoZWNrZXIgPSBzb2Z0d2FyZVN5c3RlbSAiUHJpZW1DaGVja2VyIFN5c3RlZW0iIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gIkVlbiBzeXN0ZWVtIGRhdCBjb250cm9sZWVydCBvZiBlZW4gZ2V0YWwgZWVuIHByaWVtZ2V0YWwgaXMuIgogICAgICAgICAgICAKICAgICAgICAgICAgLy8gQ29udGFpbmVycyBiaW5uZW4gaGV0IFByaWVtQ2hlY2tlciBzeXN0ZWVtCiAgICAgICAgICAgIGZyb250RW5kID0gY29udGFpbmVyICJGcm9udC1lbmQgKE5naW54KSIgewogICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIkRlIGZyb250LWVuZCBkaWUgZHJhYWl0IG9wIE5naW54IGVuIGNvbW11bmljZWVydCBtZXQgZGUgYmFjay1lbmQuIgogICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiTmdpbngiCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGRhdGFiYXNlID0gY29udGFpbmVyICJEYXRhYmFzZSAoU1FMIFNlcnZlcikiIHsKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJTbGFhdCBkZSBvcGdldnJhYWdkZSBwcmllbWdldGFsbGVuIGVuIG1ldGFkYXRhIG9wLiIKICAgICAgICAgICAgICAgIHRlY2hub2xvZ3kgIlNRTCBTZXJ2ZXIiCiAgICAgICAgICAgICAgICB0YWdzICJEYXRhYmFzZSIKICAgICAgICAgICAgfQoKICAgICAgICAgICAgYmFja0VuZCA9IGNvbnRhaW5lciAiQmFjay1lbmQgKEphdmEgU3ByaW5nIEJvb3QpIiB7CiAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQmV2YXQgZGUgbG9naWNhIHZvb3IgaGV0IGNvbnRyb2xlcmVuIHZhbiBwcmllbWdldGFsbGVuIGVuIGNvbW11bmljZWVydCBtZXQgZGUgZGF0YWJhc2UuIgogICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiU3ByaW5nIEJvb3QiCgogICAgICAgICAgICAgICAgLy8gRGVmaW5pZWVyIGNvbXBvbmVudGVuIGJpbm5lbiBkZSBiYWNrRW5kIGNvbnRhaW5lcgogICAgICAgICAgICAgICAgY29uc29sZUFwcCA9IGNvbXBvbmVudCAiQ29uc29sZSBBcHBsaWNhdGllIiB7CiAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIkJpZWR0IHRvZWdhbmcgdG90IGRlIHByaWVtZ2V0YWxsZW4gbG9naWNhIHpvbmRlciB2ZXJkZXJlIGF1dG9yaXNhdGllLiIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJKYXZhIgogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgIHJlc3RBcGkgPSBjb21wb25lbnQgIlJFU1RmdWwgQVBJIiB7CiAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIlN0ZWx0IEFQSSBlbmRwb2ludHMgYmVzY2hpa2JhYXIgZW4gdm9lcnQgYXV0b3Jpc2F0aWUgdWl0LiIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJTcHJpbmcgTVZDIgogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgIGF1dGhTZXJ2aWNlID0gY29tcG9uZW50ICJBdXRoZW50aWNhdGllIFNlcnZpY2UiIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQmVoZWVydCBnZWJydWlrZXJzbmFtZW4gZW4gcm9sbGVuLiIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJTcHJpbmcgU2VjdXJpdHkiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgcHJpZW1TZXJ2aWNlID0gY29tcG9uZW50ICJQcmllbVNlcnZpY2UiIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQnVzaW5lc3MgbG9naWNhIHZvb3IgaGV0IGNvbnRyb2xlcmVuIG9mIGVlbiBnZXRhbCBlZW4gcHJpZW1nZXRhbCBpcy4iCiAgICAgICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiSmF2YSIKICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICBkYXRhTGF5ZXIgPSBjb21wb25lbnQgIkRhdGEgTGFhZyIgewogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJCZWhlZXJ0IGRlIHZlcmJpbmRpbmcgbWV0IFNRTCBTZXJ2ZXIgZW4gYmV2YXQgRW50aXR5IEZyYW1ld29yayBjb2RlIGZpcnN0LiIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJTcHJpbmcgRGF0YSBKUEEiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgLy8gUmVsYXRpZXMgdHVzc2VuIGNvbXBvbmVudGVuCiAgICAgICAgICAgICAgICBjb25zb2xlQXBwIC0+IHByaWVtU2VydmljZSAiR2VicnVpa3QgZGUgcHJpZW1nZXRhbGxlbiBsb2dpY2EiCiAgICAgICAgICAgICAgICByZXN0QXBpIC0+IHByaWVtU2VydmljZSAiU3R1dXJ0IHByaWVtZ2V0YWwgdmVyem9la2VuIG5hYXIgZGUgc2VydmljZSIKICAgICAgICAgICAgICAgIHJlc3RBcGkgLT4gYXV0aFNlcnZpY2UgIkNvbnRyb2xlZXJ0IGNyZWRlbnRpYWxzL3Rva2VucyB2aWEgZGUgYXV0aGVudGljYXRpZXNlcnZpY2UiCiAgICAgICAgICAgICAgICBwcmllbVNlcnZpY2UgLT4gZGF0YUxheWVyICJWZXJzdHV1cnQgZGF0YWJhc2UgdmVyem9la2VuIgogICAgICAgICAgICAgICAgZGF0YUxheWVyIC0+IHByQ2hlY2tlci5kYXRhYmFzZSAiTGVlc3QgZW4gc2NocmlqZnQgcmVzdWx0YXRlbiIKICAgICAgICAgICAgfQoKICAgICAgICB9CgogICAgICAgIC8vIEV4dGVybmUgQVBJIChvcHRpb25lZWwpCiAgICAgICAgZXh0ZXJuYWxBcGkgPSBzb2Z0d2FyZVN5c3RlbSAiRXh0ZXJuZSBXaXNrdW5kZSBBUEkiIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gIkVlbiBleHRlcm5lIEFQSSBkaWUgY29tcGxleGUgd2lza3VuZGlnZSBiZXJla2VuaW5nZW4gdWl0dm9lcnQuIgogICAgICAgICAgICB0YWdzICJFeHRlcm4iCiAgICAgICAgfQoKICAgICAgICAvLyBSZWxhdGllcyB0dXNzZW4gZGUgZWxlbWVudGVuCiAgICAgICAgYW5vbmllbWVHZWJydWlrZXIgLT4gcHJDaGVja2VyLmZyb250RW5kICJHZWJydWlrdCBvbSBpbnRlZ2VyIHByaWVtZ2V0YWxsZW4gIHRlIGNoZWNrZW4iCiAgICAgICAgaW5nZWxvZ2RlR2VicnVpa2VyIC0+IHByQ2hlY2tlci5mcm9udEVuZCAiR2VicnVpa3Qgb20gQmlnSW50ZWdlciBwcmllbWdldGFsbGVuIHRlIGNoZWNrZW4iCiAgICAgICAgcHJpdmlsZWdlZEdlYnJ1aWtlciAtPiBwckNoZWNrZXIuZnJvbnRFbmQgIkdlYnJ1aWt0IG9tIEJpZ0ludGVnZXIgcHJpZW1nZXRhbGxlbiB0ZSBjaGVja2VuIChlZXJkZXIgZ2VyYWRlbikiCiAgICAgICAgI3ByQ2hlY2tlci5iYWNrRW5kIC0+IHByQ2hlY2tlci5kYXRhYmFzZSAiTGVlc3QgZW4gc2NocmlqZnQgcmVzdWx0YXRlbiIKICAgIH0KCiAgICB2aWV3cyB7CiAgICAgICAgLy8gVm9lZyBTeXN0ZW0gQ29udGV4dCBkaWFncmFtIHRvZQogICAgICAgIHN5c3RlbUNvbnRleHQgcHJDaGVja2VyICJQcmllbUNoZWNrZXJDb250ZXh0RGlhZ3JhbSIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b2xheW91dCBscgogICAgICAgICAgICBkZXNjcmlwdGlvbiAiTGVnZW5kYTpcblBlcnNvbjogR2VicnVpa2VyIHZhbiBoZXQgc3lzdGVlbVxuU29mdHdhcmUgU3lzdGVtOiBIZXQgUHJpZW1DaGVja2VyIHN5c3RlZW1cbkV4dGVybjogRXh0ZXJuZSBzeXN0ZW1lbiB6b2FscyBkZSBXaXNrdW5kZSBBUEkiCiAgICAgICAgfQogICAgCiAgICAgICAgLy8gVm9lZyBDb250YWluZXIgZGlhZ3JhbSB0b2UKICAgICAgICBjb250YWluZXIgcHJDaGVja2VyICJQcmllbUNoZWNrZXJDb250YWluZXJEaWFncmFtIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQogICAgICAgIAogICAgICAgIGNvbXBvbmVudCBwckNoZWNrZXIuYmFja0VuZCAiUHJpZW1DaGVja2VyQ29tcG9uZW50RGlhZ3JhbSIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b2xheW91dCBscgogICAgICAgIH0KCiAgICAgICAgLy8gU3RpamxlbiB2b29yIGRlIHdlZXJnYXZlIHZhbiBlbGVtZW50ZW4KICAgICAgICBzdHlsZXMgewogICAgICAgICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzA4NDI3YgogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICAgICAgc2hhcGUgcGVyc29uCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJDb250YWluZXIiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzQzOGRkNQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkNvbXBvbmVudCIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjODViYmYwCiAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIGN5bGluZGVyCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM0MzhkZDUKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJFeHRlcm4iIHsKICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjOTk5OTk5CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgY29uZmlndXJhdGlvbiB7CiAgICAgICAgc2NvcGUgc29mdHdhcmVzeXN0ZW0KICAgICAgICAjIHRoZW1lIGRlZmF1bHQKICAgIH0KfQ=="
+  },
+  "views" : {
+    "componentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "containerId" : "9",
+      "dimensions" : {
+        "height" : 1411,
+        "width" : 3120
+      },
+      "elements" : [ {
+        "id" : "8",
+        "x" : 2470,
+        "y" : 220
+      }, {
+        "id" : "10",
+        "x" : 220,
+        "y" : 220
+      }, {
+        "id" : "11",
+        "x" : 220,
+        "y" : 820
+      }, {
+        "id" : "12",
+        "x" : 970,
+        "y" : 820
+      }, {
+        "id" : "13",
+        "x" : 970,
+        "y" : 220
+      }, {
+        "id" : "14",
+        "x" : 1720,
+        "y" : 220
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "PriemCheckerComponentDiagram",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "PriemCheckerComponentDiagram",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements" : [ {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "tag" : "Software System"
+        }, {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "tag" : "Container"
+        }, {
+          "background" : "#85bbf0",
+          "color" : "#000000",
+          "tag" : "Component"
+        }, {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "shape" : "Cylinder",
+          "tag" : "Database"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "tag" : "Extern"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2200,
+        "width" : 2320
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 199,
+        "y" : 199
+      }, {
+        "id" : "2",
+        "x" : 199,
+        "y" : 899
+      }, {
+        "id" : "3",
+        "x" : 199,
+        "y" : 1599
+      }, {
+        "id" : "7",
+        "x" : 899,
+        "y" : 949
+      }, {
+        "id" : "8",
+        "x" : 1649,
+        "y" : 1549
+      }, {
+        "id" : "9",
+        "x" : 899,
+        "y" : 1549
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "PriemCheckerContainerDiagram",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "20"
+      }, {
+        "id" : "22"
+      }, {
+        "id" : "24"
+      }, {
+        "id" : "26",
+        "vertices" : [ {
+          "x" : 795,
+          "y" : 1399
+        } ]
+      } ],
+      "softwareSystemId" : "6"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Legenda:\nPerson: Gebruiker van het systeem\nSoftware System: Het PriemChecker systeem\nExtern: Externe systemen zoals de Wiskunde API",
+      "dimensions" : {
+        "height" : 2200,
+        "width" : 1729
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 289,
+        "y" : 199
+      }, {
+        "id" : "2",
+        "x" : 289,
+        "y" : 899
+      }, {
+        "id" : "3",
+        "x" : 289,
+        "y" : 1599
+      }, {
+        "id" : "6",
+        "x" : 989,
+        "y" : 949
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "PriemCheckerContextDiagram",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "23"
+      }, {
+        "id" : "25"
+      }, {
+        "id" : "27"
+      } ],
+      "softwareSystemId" : "6"
+    } ]
+  }
+}

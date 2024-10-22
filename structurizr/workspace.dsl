@@ -35,24 +35,25 @@ workspace "PriemChecker" "Context, Container en Component diagrammen voor PriemC
                 technology "Nginx"
             }
 
+            database = container "Database (SQL Server)" {
+                description "Slaat de opgevraagde priemgetallen en metadata op."
+                technology "SQL Server"
+                tags "Database"
+            }
+
             backEnd = container "Back-end (Java Spring Boot)" {
                 description "Bevat de logica voor het controleren van priemgetallen en communiceert met de database."
                 technology "Spring Boot"
 
                 // Definieer componenten binnen de backEnd container
-                restApi = component "RESTful API" {
-                    description "Stelt API endpoints beschikbaar en voert autorisatie uit."
-                    technology "Spring MVC"
-                }
-
                 consoleApp = component "Console Applicatie" {
                     description "Biedt toegang tot de priemgetallen logica zonder verdere autorisatie."
                     technology "Java"
                 }
 
-                priemService = component "PriemService" {
-                    description "Business logica voor het controleren of een getal een priemgetal is."
-                    technology "Java"
+                restApi = component "RESTful API" {
+                    description "Stelt API endpoints beschikbaar en voert autorisatie uit."
+                    technology "Spring MVC"
                 }
 
                 authService = component "Authenticatie Service" {
@@ -60,17 +61,24 @@ workspace "PriemChecker" "Context, Container en Component diagrammen voor PriemC
                     technology "Spring Security"
                 }
 
+                priemService = component "PriemService" {
+                    description "Business logica voor het controleren of een getal een priemgetal is."
+                    technology "Java"
+                }
+
                 dataLayer = component "Data Laag" {
                     description "Beheert de verbinding met SQL Server en bevat Entity Framework code first."
                     technology "Spring Data JPA"
                 }
+
+                // Relaties tussen componenten
+                consoleApp -> priemService "Gebruikt de priemgetallen logica"
+                restApi -> priemService "Stuurt priemgetal verzoeken naar de service"
+                restApi -> authService "Controleert credentials/tokens via de authenticatieservice"
+                priemService -> dataLayer "Verstuurt database verzoeken"
+                dataLayer -> prChecker.database "Leest en schrijft resultaten"
             }
 
-            database = container "Database (SQL Server)" {
-                description "Slaat de opgevraagde priemgetallen en metadata op."
-                technology "SQL Server"
-                tags "Database"
-            }
         }
 
         // Externe API (optioneel)
@@ -83,8 +91,7 @@ workspace "PriemChecker" "Context, Container en Component diagrammen voor PriemC
         anoniemeGebruiker -> prChecker.frontEnd "Gebruikt om integer priemgetallen  te checken"
         ingelogdeGebruiker -> prChecker.frontEnd "Gebruikt om BigInteger priemgetallen te checken"
         privilegedGebruiker -> prChecker.frontEnd "Gebruikt om BigInteger priemgetallen te checken (eerder geraden)"
-        prChecker.backEnd -> prChecker.database "Leest en schrijft resultaten"
-        prChecker.backEnd -> externalApi "Vraagt complexe berekeningen aan"
+        #prChecker.backEnd -> prChecker.database "Leest en schrijft resultaten"
     }
 
     views {
