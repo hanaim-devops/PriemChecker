@@ -25,6 +25,9 @@ internal class Program
         builder.Services.AddDbContext<PriemCheckContext>(options =>
             options.UseSqlServer(connectionString));
 
+        // Register PriemCheckRepository
+        builder.Services.AddScoped<PriemCheckRepository>();
+
         // Register the base implementation
         builder.Services.AddScoped<NuGetPriemChecker>();
 
@@ -53,7 +56,6 @@ internal class Program
         app.MapGet("/helloWorld", HelloWorldHandler.SayHello)
             .WithName("Hello World")
             .WithOpenApi();
-        app.Run();
 
         app.MapPost("/isPriem", PriemCheckerHandler.IsPriem)
             .WithName("IsPriem")
@@ -64,30 +66,7 @@ internal class Program
             .WithName("PriemGetallen")
             .WithOpenApi();
 
-    }
-}
+        app.Run();
 
-public class HelloWorldHandler
-{
-    public static IResult SayHello()
-    {
-        return Results.Ok("Hello World!");
-    }
-}
-
-public class PriemCheckerHandler
-{
-    public static IResult IsPriem(IPriemChecker priemgetalChecker, int getal)
-    {
-        var result = priemgetalChecker.IsPriemgetal(getal);
-        return Results.Ok(result);
-    }
-}
-public class PriemRepositoryHandler
-{
-    public static async Task<IResult> HaalAllePriemGetallenOpAsync(PriemCheckRepository priemCheckRepository)
-    {
-        var resultaten = await priemCheckRepository.HaalAlleResultatenOpAsync();
-        return Results.Ok(resultaten);
     }
 }

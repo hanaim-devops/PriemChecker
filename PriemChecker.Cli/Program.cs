@@ -24,15 +24,6 @@ namespace PriemChecker.Cli
                 priemKandidaat = new Random(0).Next();
                 Console.WriteLine("Geen getal meegegeven, we gebruiken random getal '" + priemKandidaat + "'.");
             }
-            else
-            {
-                if (!Int32.TryParse(args[0], out priemKandidaat))
-                {
-                    throw new ArgumentException("Input " + args[0] + " is geen geldig integer getal.");
-                    // var grotePriemKandidaat = System.Numerics.BigInteger.Parse(args[0]);
-                    // var isGrotePriem = primeTester.IsPriemgetal(grotePriemKandidaat);
-                }
-            }
             
             // Bouw de configuratie door het appsettings.json bestand te laden
             var configuration = new ConfigurationBuilder()
@@ -72,14 +63,20 @@ namespace PriemChecker.Cli
             using var scope = serviceProvider.CreateScope();
             var priemChecker = scope.ServiceProvider.GetRequiredService<IPriemChecker>();
 
+            PriemCheckResultaat resultaat = null;
             // Voorbeeld: gebruik de service
-            var isPriem = priemChecker.IsPriemgetal(priemKandidaat);
+            if (!Int32.TryParse(args[0], out priemKandidaat))
+            {
+                var grotePriemKandidaat = System.Numerics.BigInteger.Parse(args[0]);
+                resultaat = priemChecker.IsPriemgetal(grotePriemKandidaat);
+            }
+            else
+            {
+                resultaat = priemChecker.IsPriemgetal(priemKandidaat);
+            }
 
-            // int aantalLoops = 0;
-            // var isPriem = primeTester.IsPriemgetal(priemKandidaat, aantalLoops);
-            System.Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (isPriem.IsPriemgetal ? "JA" : "NEE"));
-            Console.WriteLine("Aantal loops: " + isPriem.AantalLoops + "aantal millisecs: " + isPriem.AantalSecondenOmTeBerekenen);
-            
+            System.Console.WriteLine("Is getal " + priemKandidaat + " een priemgetal? " + (resultaat.IsPriemgetal ? "JA" : "NEE"));
+            Console.WriteLine("Aantal loops: " + resultaat.AantalLoops + "aantal millisecs: " + resultaat.AantalSecondenOmTeBerekenen);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -14,14 +15,15 @@ namespace PriemChecker.Persistence.Migrations
                 name: "PriemCheckResultaten",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PriemKandidaatWaarde = table.Column<int>(type: "int", nullable: false),
-                    IsPriemgetal = table.Column<bool>(type: "bit", nullable: false)
+                    PriemKandidaatWaarde = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsPriemgetal = table.Column<bool>(type: "bit", nullable: false),
+                    AantalLoops = table.Column<double>(type: "float", nullable: true),
+                    MilliSecondenOmTeBerekenen = table.Column<double>(type: "float", nullable: true),
+                    UitgerekendOp = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PriemCheckResultaten", x => x.Id);
+                    table.PrimaryKey("PK_PriemCheckResultaten", x => x.PriemKandidaatWaarde);
                 });
         }
 

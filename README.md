@@ -99,14 +99,14 @@ Je kunt deze dan benaderen via bijvoorbeeld de Database explorer in Rider (onder
 Hier een voorbeeld van genereren van een (data) migration (doe dit vanuit de root `PriemChecker` folder):
 
 ```console
-dotnet ef migrations add IdVeldInPriemCheckResultaat --project PriemChecker.Domein --startup-project PriemChecker.Web
+dotnet ef migrations add IdVeldInPriemCheckResultaat --project PriemChecker.Persistence --startup-project PriemChecker.Web
 
 ```
 
 En hier een voorbeeld van uitvoeren van deze migratie:
 
 ```console
-dotnet ef database update --project PriemCheckerLibrary --startup-project WebPriemChecker
+dotnet ef database update --project PriemChecker.Persistence --startup-project PriemChecker.Web
 ```
 
 De kern is hierbij `dotnet ef database update`. Maar de `--project` flag setting helpt zodat je dit commando vanuit de root `PriemChecker` folder kunt uitvoeren en niet eerst een `cd PriemCheckerLibrary` in hoeft om het project met de `...Context` bestanden erin in te gaan. En het `--startup-project` zorgt ervoor dat de migrations de configuratie uit de `appSettings.*.json` bestanden in dit web project kunnen lezen (via de hulpklasse `PriemCheckContextFactory`).
@@ -118,5 +118,5 @@ De kern is hierbij `dotnet ef database update`. Maar de `--project` flag setting
 
 ## Bibliografie
 
--  Lander, R. (2021, November 8). *Announcing .NET 6 - The Fastest .NET Yet.* Microsoft DevBlogs. Zie <https://devblogs.microsoft.com/dotnet/announcing-net-6/>
+- Lander, R. (2021, November 8). *Announcing .NET 6 - The Fastest .NET Yet.* Microsoft DevBlogs. Zie <https://devblogs.microsoft.com/dotnet/announcing-net-6/>
 - Warren, G., Pine, D. aka "IEvangelist" (2024, August 2). *What's new in .NET 8 - Minimal APIs and More.* Microsoft DevBlogs. Zie <https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/overview>

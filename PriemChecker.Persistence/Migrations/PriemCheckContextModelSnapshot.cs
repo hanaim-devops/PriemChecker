@@ -24,8 +24,8 @@ namespace PriemChecker.Persistence.Migrations
 
             modelBuilder.Entity("PriemChecker.Persistence.PriemCheckResultaatEntity", b =>
                 {
-                    b.Property<double>("Id")
-                        .HasColumnType("float");
+                    b.Property<string>("PriemKandidaatWaarde")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double?>("AantalLoops")
                         .HasColumnType("float");
@@ -36,14 +36,10 @@ namespace PriemChecker.Persistence.Migrations
                     b.Property<double?>("MilliSecondenOmTeBerekenen")
                         .HasColumnType("float");
 
-                    b.Property<string>("PriemKandidaatWaarde")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("UitgerekendOp")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("PriemKandidaatWaarde");
 
                     b.ToTable("PriemCheckResultaten");
                 });

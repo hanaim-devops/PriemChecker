@@ -21,14 +21,20 @@ public class PriemCheckContext : DbContext
         // Definieer de BigInteger naar string converter.
         // Zie verder `docs/ADR/ORM-EF-Core-Value-Converter.md`
         var bigIntegerConverter = new ValueConverter<BigInteger, string>(
-            v => v.ToString(), // Converteer BigInteger naar string bij opslaan
-            v => BigInteger.Parse(v) // Converteer string terug naar BigInteger bij uitlezen
+            v => v.ToString(),
+            v => BigInteger.Parse(v)
         );
 
-        // Configureer de PriemKandidaatWaarde eigenschap met de ValueConverter en zorg ervoor dat deze geen Identity is.
+        // Configureer PriemKandidaatWaarde als de primaire sleutel
+        modelBuilder.Entity<PriemCheckResultaatEntity>()
+            .HasKey(p => p.PriemKandidaatWaarde);
+
         modelBuilder.Entity<PriemCheckResultaatEntity>()
             .Property(p => p.PriemKandidaatWaarde)
-            .HasConversion(bigIntegerConverter) // Pas de ValueConverter toe
-            .ValueGeneratedNever(); // PriemKandidaatWaarde is geen Identity (geen auto-generatie)
+            .HasConversion(bigIntegerConverter) // Converteer BigInteger naar string
+            .ValueGeneratedNever(); // Omdat je de waarde zelf opgeeft, niet door de database laten genereren
+
+        // Andere kolomconfiguraties
     }
+
 }

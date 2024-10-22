@@ -26,15 +26,17 @@ public class MemoizingPriemChecker: IPriemChecker {
     {
         Console.WriteLine($"IsPriemgetal: {number}");
         // Check of resultaat al in database staat.
-        PriemCheckResultaatEntity existingResult = null;
+        PriemCheckResultaatEntity? existingResult = null!;
         try
         {
             existingResult = _context.PriemCheckResultaten
-                .FirstOrDefault(r => r.PriemKandidaatWaarde == number);
+                .FirstOrDefault(r => r.PriemKandidaatWaarde == number)!;
         }
         catch (Microsoft.Data.SqlClient.SqlException e)
         {
-            throw new PriemDatabaseException("Database lijkt offline.");
+            var databaseException = new PriemDatabaseException();
+            Console.WriteLine(databaseException.Message + ": " + e.Message);
+            throw databaseException;
         }
 
         if (existingResult != null)
@@ -52,7 +54,7 @@ public class MemoizingPriemChecker: IPriemChecker {
 
         var huidigeDateTime = DateTime.UtcNow;
         
-        // Resultaat opslaan in database
+        // Resultaat opslaan in database.
         _context.PriemCheckResultaten.Add(new PriemCheckResultaatEntity(
             number,
             result.IsPriemgetal,
