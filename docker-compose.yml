@@ -45,7 +45,7 @@
     ports:
       - "8080:8080"  # Expose Structurizr Lite on port 8080
     volumes:
-      - ./structurizr:/usr/local/structurizr  # Mount the local structurizr folder
+      - ./structurizr/workspace.dsl:/usr/local/structurizr/workspace.dsl:ro
     environment:
       - STRUCTURIZR_WORKSPACE_PATH=/usr/local/structurizr/workspace.dsl
 
