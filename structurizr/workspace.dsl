@@ -3,6 +3,7 @@ workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
     !identifiers hierarchical
 
     model {
+
         // Gebruiker van het PriemChecker systeem
         gebruiker = person "Gebruiker" {
             description "De persoon die een getal invoert om te controleren of het een priemgetal is."
@@ -38,13 +39,13 @@ workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
 
     views {
         // Context diagram voor het PriemChecker systeem
-        systemContext prChecker "PriemChecker Context Diagram" {
+        systemContext prChecker "PriemCheckerContextDiagram" {
             include *
             autolayout lr
         }
 
         // Container diagram voor het PriemChecker systeem
-        container prChecker "PriemChecker Container Diagram" {
+        container prChecker "PriemCheckerContainerDiagram" {
             include *
             autolayout lr
         }
@@ -52,18 +53,22 @@ workspace "PriemChecker" "Context diagram voor PriemChecker systeem" {
         // Stijlen voor de weergave van elementen
         styles {
             element "Person" {
-                background #d34407
+                background #08427b
+                color #ffffff
                 shape person
             }
             element "Software System" {
-                background #f86628
+                background #1168bd
+                color #ffffff
             }
             element "Container" {
-                background #f88728
+                background #438dd5
+                color #ffffff
             }
             element "Database" {
                 shape cylinder
-                background #ffbd00
+                background #438dd5
+                color #ffffff
             }
         }
     }
