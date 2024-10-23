@@ -39,7 +39,7 @@ internal class Program
             
             // TODO: Add feature toggle voor CDMM 'gemiddeld' niveau.
             var useMemoization = true;
-            return useMemoization ? new MemoizingPriemChecker(context, baseChecker) : new SimpelPriemChecker();
+            return useMemoization ? new MemoizingPriemChecker(context, baseChecker) : new PriemCheckerMetSnelheidsMeting(new SimpelPriemChecker());
         });
 
         var app = builder.Build();

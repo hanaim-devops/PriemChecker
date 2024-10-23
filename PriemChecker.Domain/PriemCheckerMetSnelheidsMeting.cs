@@ -17,13 +17,16 @@ public class PriemCheckerMetSnelheidsMeting(IPriemChecker priemChecker) : IPriem
         // Stop de stopwatch en meet de verstreken tijd
         stopwatch.Stop();
         var aantalMilliSecondenOmTeBerekenen = stopwatch.ElapsedMilliseconds;
-        Console.WriteLine($"Priemgetal check voor {kandidaat} duurde {aantalMilliSecondenOmTeBerekenen} ms");
+        var aantalTicksOmTeBerekenen = stopwatch.ElapsedTicks;
+
+        Console.WriteLine($"Priemgetal check voor {kandidaat} duurde {aantalMilliSecondenOmTeBerekenen} ms over {aantalTicksOmTeBerekenen} ticks.");
 
         return new PriemCheckResultaat(
             innerPriemCheckResultaat.PriemKandidaatWaarde,
             innerPriemCheckResultaat.IsPriemgetal,
             innerPriemCheckResultaat.AantalLoops,
-            aantalMilliSecondenOmTeBerekenen
-            );
+            aantalMilliSecondenOmTeBerekenen,
+            aantalTicksOmTeBerekenen
+       );
     }
 }

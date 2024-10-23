@@ -14,6 +14,7 @@ public class SimpelPriemChecker: IPriemChecker
                 kandidaat, 
                 false,
                 0,
+                null,
                 null);
         }
 
@@ -28,6 +29,7 @@ public class SimpelPriemChecker: IPriemChecker
                     kandidaat, 
                     false, 
                     aantalLoops, 
+                    null,
                     null);
             }
         }
@@ -37,6 +39,7 @@ public class SimpelPriemChecker: IPriemChecker
             kandidaat, 
             true, 
             aantalLoops, 
+            null,
             null);
     }
 }

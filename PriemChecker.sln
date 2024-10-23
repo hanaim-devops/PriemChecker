@@ -18,10 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Persistence", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Abstractions", "PriemChecker.Abstractions\PriemChecker.Abstractions.csproj", "{1F211005-ECDA-4293-AB2A-9204EE330D3C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5AC0F93D-AE72-43BE-98E1-0CF33B5BD630}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{92D4DD3B-3F44-4B04-9D0A-D60330D9D88A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,7 +50,5 @@ Global
 		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5AC0F93D-AE72-43BE-98E1-0CF33B5BD630} = {DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}
-		{92D4DD3B-3F44-4B04-9D0A-D60330D9D88A} = {5AC0F93D-AE72-43BE-98E1-0CF33B5BD630}
 	EndGlobalSection
 EndGlobal

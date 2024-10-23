@@ -14,7 +14,8 @@ public class PriemRepositoryHandler
             r.PriemKandidaatWaarde.ToString(),   // Convert BigInteger to string
             r.IsPriemgetal,
             r.AantalLoops,
-            r.MilliSecondenOmTeBerekenen
+            r.MilliSecondenOmTeBerekenen,
+            r.TicksOmTeBerekenen
         )).ToList();
         
         return Results.Ok(resultaatModels);

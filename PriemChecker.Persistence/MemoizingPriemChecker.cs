@@ -24,9 +24,8 @@ public class MemoizingPriemChecker: IPriemChecker {
     
     public PriemCheckResultaat IsPriemgetal(BigInteger number)
     {
-        Console.WriteLine($"IsPriemgetal: {number}");
         // Check of resultaat al in database staat.
-        PriemCheckResultaatEntity? existingResult = null!;
+        PriemCheckResultaatEntity? existingResult;
         try
         {
             existingResult = _context.PriemCheckResultaten
@@ -45,7 +44,8 @@ public class MemoizingPriemChecker: IPriemChecker {
                 existingResult.PriemKandidaatWaarde, 
                 existingResult.IsPriemgetal, 
                 existingResult.AantalLoops,
-                null
+                existingResult.MilliSecondenOmTeBerekenen,
+                existingResult.TicksOmTeBerekenen
                 );
         }
 
@@ -59,9 +59,10 @@ public class MemoizingPriemChecker: IPriemChecker {
             number,
             result.IsPriemgetal,
             huidigeDateTime,
-            result.AantalSecondenOmTeBerekenen,
-            result.AantalLoops
-            ));
+            result.AantalLoops,
+            result.AantalMilliSecondenOmTeBerekenen,
+            result.AantalTicksOmTeBerekenen
+        ));
         _context.SaveChanges();
 
         return result;

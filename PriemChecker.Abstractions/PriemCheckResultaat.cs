@@ -6,12 +6,13 @@ public record PriemCheckResultaat(
     string PriemKandidaatWaarde,  // Change BigInteger to string
     bool IsPriemgetal,
     double? AantalLoops,
-    double? AantalSecondenOmTeBerekenen
+    double? AantalMilliSecondenOmTeBerekenen,
+    double? AantalTicksOmTeBerekenen
 )
 {
     // Constructor overload to accept BigInteger and convert to string
-    public PriemCheckResultaat(BigInteger priemKandidaatWaarde, bool isPriemgetal, double? aantalLoops, double? aantalSecondenOmTeBerekenen)
-        : this(priemKandidaatWaarde.ToString(), isPriemgetal, aantalLoops, aantalSecondenOmTeBerekenen)
+    public PriemCheckResultaat(BigInteger priemKandidaatWaarde, bool isPriemgetal, double? aantalLoops, double? aantalSecondenOmTeBerekenen, double? aantalTicksOmTeBerekenen)
+        : this(priemKandidaatWaarde.ToString(), isPriemgetal, aantalLoops, aantalSecondenOmTeBerekenen, aantalTicksOmTeBerekenen)
     {
     }
 }
