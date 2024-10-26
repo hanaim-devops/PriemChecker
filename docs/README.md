@@ -70,7 +70,7 @@ En Figuur 2 toont het met Structurizr gemaakte Context diagram, waarin de gebrui
 
 Maar dit is al wel prima bruikbaar voorbeeld opzet voor C4 diagrammen voor bijvoorbeeld een [PitStop uitbreiding (HAN Minor DevOps, 2024)](http://minordevops.nl/week-7-8-beroepsproduct/workshop-user-story-mapping.html#casussen-uitbreiding-pitstop).
 
-<img src="plaatjes/PriemCheckerContext-thumbnail.png" alt="Context diagram" />
+<img src="plaatjes/PriemCheckerContextDiagram-thumbnail.png" alt="Context diagram" />
 
 *Figuur 2*: Het Systeem Context diagram met de 3 gebruikers en beoogde externe koppeling.
 
@@ -78,7 +78,7 @@ Maar dit is al wel prima bruikbaar voorbeeld opzet voor C4 diagrammen voor bijvo
 
 *Figuur 3*: Het Container diagram van applicatie: Alleen het is toch .NET i.p.v. Java?
 
-<img src="plaatjes/PriemChgeckerComponentDiagram-thumbnail.png" alt="Component diagram" />
+<img src="plaatjes/PriemCheckerComponentDiagram-thumbnail.png" alt="Component diagram" />
 
 *Figuur 4*: Een component diagram van de back-end container.
 
