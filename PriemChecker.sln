@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Cli", "PriemChecker.Cli\PriemChecker.Cli.csproj", "{3A370E8C-B5A5-43FD-8D80-3D58F0DE6EB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}"
@@ -17,6 +18,37 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Persistence", "PriemChecker.Persistence\PriemChecker.Persistence.csproj", "{8DA0FC15-34E2-4876-9E56-F89677C96E88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriemChecker.Abstractions", "PriemChecker.Abstractions\PriemChecker.Abstractions.csproj", "{1F211005-ECDA-4293-AB2A-9204EE330D3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "structurizr", "structurizr", "{CC7772EC-684F-4F21-B31F-845442766DFE}"
+	ProjectSection(SolutionItems) = preProject
+		structurizr\workspace_org.dsl = structurizr\workspace_org.dsl
+		workspace.dsl = workspace.dsl
+		structurizr\README.md = structurizr\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{53DDC5D8-4434-4880-810C-C22177EC2457}"
+	ProjectSection(SolutionItems) = preProject
+		docs\README.md = docs\README.md
+		docs\images\thumbnail.png = docs\images\thumbnail.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adr", "adr", "{11EE50CF-B24C-4ABE-B61A-CCA00A822517}"
+	ProjectSection(SolutionItems) = preProject
+		docs\ADR\adr-001-csharp-net.md = docs\ADR\adr-001-csharp-net.md
+		docs\ADR\adr-002-ef-core.md = docs\ADR\adr-002-ef-core.md
+		docs\ADR\adr-003-sql-server.md = docs\ADR\adr-003-sql-server.md
+		docs\ADR\adr-004-orm-ef-core-value-converter.md = docs\ADR\adr-004-orm-ef-core-value-converter.md
+		docs\ADR\adr-005-separated-interface.md = docs\ADR\adr-005-separated-interface.md
+		docs\ADR\README.md = docs\ADR\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plaatjes", "plaatjes", "{F0BB9AE8-8750-4E10-AB85-8A6008572066}"
+	ProjectSection(SolutionItems) = preProject
+		docs\images\Diagram1-thumbnail.png = docs\images\Diagram1-thumbnail.png
+		docs\images\PriemCheckerComponentDiagram-thumbnail.png = docs\images\PriemCheckerComponentDiagram-thumbnail.png
+		docs\images\PriemCheckerContainerDiagram-thumbnail.png = docs\images\PriemCheckerContainerDiagram-thumbnail.png
+		docs\images\PriemCheckerContextDiagram-thumbnail.png = docs\images\PriemCheckerContextDiagram-thumbnail.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,5 +82,9 @@ Global
 		{1F211005-ECDA-4293-AB2A-9204EE330D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{CC7772EC-684F-4F21-B31F-845442766DFE} = {DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}
+		{53DDC5D8-4434-4880-810C-C22177EC2457} = {DBA73C0A-F60B-4EA9-9708-C7BDDD754F29}
+		{11EE50CF-B24C-4ABE-B61A-CCA00A822517} = {53DDC5D8-4434-4880-810C-C22177EC2457}
+		{F0BB9AE8-8750-4E10-AB85-8A6008572066} = {53DDC5D8-4434-4880-810C-C22177EC2457}
 	EndGlobalSection
 EndGlobal

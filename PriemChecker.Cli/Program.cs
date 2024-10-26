@@ -10,7 +10,7 @@ namespace PriemChecker.Cli
 {
     static class Program
     {
-        // TODO: Command line parameters zoals --memoisation false parsen.
+        // TODO: Command line parameters zoals `--memoisation false` parsen.
         // Dit kan met behulp van System.Commandline package; zie: https://learn.microsoft.com/en-us/dotnet/standard/commandline/
         public static void Main(string[] args)
         {

@@ -1,5 +1,7 @@
 # Priemgetal Checker
 
+Deze repository bevat de broncode voor de PriemChecker applicatie, evenals C4-diagrammen om de architectuur te beschrijven. De diagrammen zijn gemaakt met **Structurizr Lite**.
+  
 Dit project moet er komen in zowel een Java Spring boot variant als een C# variant. De Java variant zit al in de blog post op minordevops.nl ([van der Wal, 2024](https://minordevops.nl/blogs/spring-boot-priemtester/index.html)), dus dit project werkt de C# variant uit.
 
 We hanteren Domain Driven Design (DDD) voor deze simpele opgave als oefening. We houden het nog wel bij een monoliet in plaats van Microservices (Architecture; MSA). Maar als oefening, en met idee dit later te kunnen 'stranglen' naar microservicves, maken we wel een *modulaire* monoliet. En we hangen een beetje richting 'over engineering' met gebruiken principes van Layered architecture, TDD en Dependency Injection (DI).
@@ -18,20 +20,34 @@ In afwezigheid van een echte opdrachtgever zie ik Wikipedia als Business expert.
 
 De Engels-Amerikaans-talige Wikipedia noemt testen voor priemgetallen testen het 'primality checking'.
 
-Aangezien de opdracht in het Nederlands is gebruik ik ook Nederlands, maar gebruik ik wel de uit het Engels afkomstige term 'checken'. Prettige bijkomstigheid is dat nu de `xUnit` naamgeving postfix `-test` in bestandsnamen anders is, en dat het geen PriemgetalTesterTest wordt, maar `PriemgetalCheckerTest` - https://nl.wikipedia.org/wiki/Priemgetal
+Aangezien de opdracht in het Nederlands is gebruik ik ook Nederlands, maar gebruik ik wel de uit het Engels afkomstige term 'checken'. Prettige bijkomstigheid is dat nu de `xUnit` naamgeving postfix `-test` in bestandsnamen anders is, en dat het geen PriemgetalTesterTest wordt, maar `PriemgetalCheckerTest` - Wikipedia: <https://nl.wikipedia.org/wiki/Priemgetal>
 
-> "The property of being prime is called primality. A simple but slow method of checking the primality of a given number n, called trial division, ..." - https://en.wikipedia.org/wiki/Prime_number
+> "The property of being prime is called primality. A simple but slow method of checking the primality of a given number n, called trial division,  tests whether `n` is a multiple of any integer between 2 and 
+`√n``" - [Wikipedia.org (EN): 'Prime number](https://en.wikipedia.org/wiki/Prime_number).
+
+Een snellere methode, die ook NuGet of Maven packages gebruiken is de zogenaamde 'Miller–Rabin' test.
+
+## Hoe Structurizr Lite te gebruiken
+
+1. Zorg ervoor dat je Docker hebt geïnstalleerd.
+   a. Handigst is via [Docker desktop](https://www.docker.com/products/docker-desktop/) voor Windows of macOS.
+   b. Of plain Docker op linux (maar er is nu ook [Desktop versie voor Linux](https://docs.docker.com/desktop/install/linux/))
+2. Navigeer naar de `structurizr-lite` map.
+3. Start Structurizr Lite met het volgende commando:
+
+   ```bash
+   docker-compose up
 
 ## EF core, code first ORM with migrations
 
-Bron: 
-https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
+Bron: <https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli>
 
 ## How to run?
 
 De WEB api met Swagger test pagina's kun je makkelijkst runnen uit IDE. Ik gebruikte Rider 2024.2.4.
 
-Maar het kan ook met
+Maar het kan ook vanaf de command line:
+
 ```console
 cd WebPriemgetal 
 dotnet run
@@ -41,7 +57,8 @@ En dan ga je naar aangegeven URL. Je moet wel `/swagger` achtervoegen.
 
 Standaard `http://localhost:5062`
 
-Of gebruik
+Of gebruik:
+
 ```console
 curl -X 'POST' \
   'http://localhost:5062/isPriem?getal=12' \
@@ -52,7 +69,7 @@ curl -X 'POST' \
 
 De command line kan je runnen met `dotnet` cli, mits je die hebt geinstalleerd natuurlijk (en [`brew`](https://brew.sh/) geïnstalleerd hebt).
 
-### Install op macOS:
+### Install op macOS
 
 ```console
 brew install dotnet@8
@@ -120,3 +137,4 @@ De kern is hierbij `dotnet ef database update`. Maar de `--project` flag setting
 
 - Lander, R. (2021, November 8). *Announcing .NET 6 - The Fastest .NET Yet.* Microsoft DevBlogs. Zie <https://devblogs.microsoft.com/dotnet/announcing-net-6/>
 - Warren, G., Pine, D. aka "IEvangelist" (2024, August 2). *What's new in .NET 8 - Minimal APIs and More.* Microsoft DevBlogs. Zie <https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/overview>
+- Wikipedia (21 okt 2024) *Prime number*. Geraadpleegd november 2024 op <https://en.wikipedia.org/w/index.php?title=Prime_number&oldid=1252517963>
