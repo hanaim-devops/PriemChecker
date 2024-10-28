@@ -36,7 +36,7 @@ Een snellere methode, die ook NuGet of Maven packages gebruiken is de zogenaamde
 3. Start Structurizr Lite met het volgende commando:
 
    ```bash
-   docker-compose up
+   docker compose up
 
 ## EF core, code first ORM with migrations
 
