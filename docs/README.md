@@ -38,6 +38,7 @@ Zie de `docs/` directory voor verdere documentatie over de architectuur, use cas
 We gebruiken C4 diagrammen om de Software Architectuur van de PriemChecker weer te geven op verschillende niveaus. Figuur 1 toont het gehele systeem in een C4 System Context diagram.
 
 ```plantuml
+@startuml
 !define RECTANGLE <<rectangle>>
 
 title PriemChecker - Context Diagram
@@ -52,16 +53,17 @@ LoggedInUser --> PriemCheckerApp : "Getal insturen (BigInteger)"
 PrivilegedUser --> PriemCheckerApp : "Eerder opgevraagde getallen, max 1/dag"
 Admin --> PriemCheckerApp : "Statistieken opvragen"
 
-boundary PriemCheckerApp {
-  RECTANGLE FrontEnd as FE
-  RECTANGLE BackEnd as BE
-  RECTANGLE SQLServer as DB
-  RECTANGLE ExternalSuperComputer as PrimeSuperComputer
+rectangle PriemCheckerApp {
+  rectangle FrontEnd as FE
+  rectangle BackEnd as BE
+  rectangle SQLServer as DB
+  rectangle ExternalSuperComputer as PrimeSuperComputer
 }
 
 FE --> BE : "API requests (JSON)"
 BE --> DB : "Opslaan en ophalen priemgetallen"
 BE --> PrimeSuperComputer : "Uitbesteden zware berekeningen"
+@enduml
 ```
 
 *Figuur 1*: Het systeem en zijn gebruikers en externe systemen
