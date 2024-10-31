@@ -40,6 +40,7 @@ We gebruiken C4 diagrammen om de Software Architectuur van de PriemChecker weer 
 ```mermaid
 flowchart TD
 
+    %% Define the main application structure
     subgraph PriemCheckerApp
         direction TB
         FE["Front-End"]
@@ -47,20 +48,23 @@ flowchart TD
         DB["SQL Server"]
     end
 
+    %% Define users and external system
     AnonymousUser["Anonieme Gebruiker"]
     LoggedInUser["Ingelogde Gebruiker"]
     PrivilegedUser["Prime Hacker"]
     Admin["Admin Gebruiker"]
     PrimeSuperComputer["External SuperComputer"]
 
+    %% User interactions with the front-end
     AnonymousUser -->|Getal als int| FE
     LoggedInUser -->|Getal als BigInteger| FE
     PrivilegedUser -->|Opvragen eerdere getallen| FE
     Admin -->|Opvragen statistieken| FE
 
+    %% Internal interactions
     FE -->|API verzoeken JSON| BE
     BE -->|Opslaan priemgetallen| DB
-    BE -->|Zware berekeningen| PrimeSuperComputer
+    DB -->|Zware berekeningen| PrimeSuperComputer
 ```
 
 *Figuur 1*: PriemChecker - System **C**ontext Diagram: Het systeem met gebruikers en externe systemen
