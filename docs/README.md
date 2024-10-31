@@ -37,36 +37,33 @@ Zie de `docs/` directory voor verdere documentatie over de architectuur, use cas
 
 We gebruiken C4 diagrammen om de Software Architectuur van de PriemChecker weer te geven op verschillende niveaus. Figuur 1 toont het gehele systeem in een C4 System Context diagram.
 
-```plantuml
-@startuml
-!define RECTANGLE <<rectangle>>
+```mermaid
+flowchart TD
 
-title PriemChecker - Context Diagram
+    subgraph PriemCheckerApp
+        direction TB
+        FE["Front-End"]
+        BE["Back-End"]
+        DB["SQL Server"]
+    end
 
-actor AnoniemeGebruiker as AnonymousUser
-actor IngelogdeGebruiker as LoggedInUser
-actor PrimeHacker as PrivilegedUser
-actor AdminUser as Admin
+    AnonymousUser["Anonieme Gebruiker"]
+    LoggedInUser["Ingelogde Gebruiker"]
+    PrivilegedUser["Prime Hacker"]
+    Admin["Admin Gebruiker"]
+    PrimeSuperComputer["External SuperComputer"]
 
-AnonymousUser --> PriemCheckerApp : "Getal insturen (int)"
-LoggedInUser --> PriemCheckerApp : "Getal insturen (BigInteger)"
-PrivilegedUser --> PriemCheckerApp : "Eerder opgevraagde getallen, max 1/dag"
-Admin --> PriemCheckerApp : "Statistieken opvragen"
+    AnonymousUser -->|Getal als int| FE
+    LoggedInUser -->|Getal als BigInteger| FE
+    PrivilegedUser -->|Opvragen eerdere getallen| FE
+    Admin -->|Opvragen statistieken| FE
 
-rectangle PriemCheckerApp {
-  rectangle FrontEnd as FE
-  rectangle BackEnd as BE
-  rectangle SQLServer as DB
-  rectangle ExternalSuperComputer as PrimeSuperComputer
-}
-
-FE --> BE : "API requests (JSON)"
-BE --> DB : "Opslaan en ophalen priemgetallen"
-BE --> PrimeSuperComputer : "Uitbesteden zware berekeningen"
-@enduml
+    FE -->|API verzoeken JSON| BE
+    BE -->|Opslaan priemgetallen| DB
+    BE -->|Zware berekeningen| PrimeSuperComputer
 ```
 
-*Figuur 1*: Het systeem en zijn gebruikers en externe systemen
+*Figuur 1*: PriemChecker - System **C**ontext Diagram: Het systeem met gebruikers en externe systemen
 
 En Figuur 2 toont het met Structurizr gemaakte Context diagram, waarin de gebruikers ook zichtbaar zijn. Het Container en Component diagram tonen ook meer internals, inclusief technische internals. De opdeling klopt grof weg, maar hier is nog iets mis mee, wat de lezer mag bekijken. Dus domweg copy-pasten kan natuurlijk sowieso niet. Daarom gebruiken we hier opzettelijk de 'low res' thumbnail preview. Run Structurizr om de hi-res versies te zien.
 
