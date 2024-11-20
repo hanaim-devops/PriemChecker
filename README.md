@@ -2,11 +2,11 @@
 
 Deze repository bevat de broncode voor de PriemChecker applicatie, evenals C4-diagrammen om de architectuur te beschrijven. De diagrammen zijn gemaakt met **Structurizr Lite**.
   
-Dit project moet er komen in zowel een Java Spring boot variant als een C# variant. De Java variant zit al in de blog post op minordevops.nl ([van der Wal, 2024](https://minordevops.nl/blogs/spring-boot-priemtester/index.html)), dus dit project werkt de C# variant uit.
+Dit project moet er komen in zowel een Java Spring boot variant als een C# variant. De Java variant zit al in de blogpost op minordevops.nl ([van der Wal, 2024](https://minordevops.nl/blogs/spring-boot-priemtester/index.html)), dus dit project werkt de C# variant uit.
 
-We hanteren Domain Driven Design (DDD) voor deze simpele opgave als oefening. We houden het nog wel bij een monoliet in plaats van Microservices (Architecture; MSA). Maar als oefening, en met idee dit later te kunnen 'stranglen' naar microservicves, maken we wel een *modulaire* monoliet. En we hangen een beetje richting 'over engineering' met gebruiken principes van Layered architecture, TDD en Dependency Injection (DI).
+We hanteren Domain Driven Design (DDD) voor deze simpele opgave als oefening. We houden het nog wel bij een monoliet in plaats van Microservices (Architecture; MSA). Maar als oefening, en met idee dit later te kunnen 'stranglen' naar MSA, maken we wel een *modulaire* monoliet. En we hangen een beetje richting 'over engineering' met gebruiken principes van Layered architecture (Onion), TDD en Dependency Injection (DI).
 
-Om *branch by abstraction** te laten zien zijn er 3 gebruikes van de priem 'service':
+Om *branch by abstraction** te laten zien zijn er 3 gebruikers van de priem 'service':
 
 1. Een main (C# of .NET console project)
 2. Een set unit tests (apart Test project die xUnit gebruikt (analoog JUnit in Java))

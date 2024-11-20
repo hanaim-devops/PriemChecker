@@ -6,7 +6,7 @@
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2024-10-25T13:16:05Z",
+  "lastModifiedDate" : "2024-11-19T00:04:38Z",
   "model" : {
     "people" : [ {
       "description" : "Gebruiker die alleen int waardes kan opvragen.",
